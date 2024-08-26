@@ -39,6 +39,16 @@ Para crear un proyecto angular:
 1.	ng new mi-proyecto-angular
 2.	cd mi-proyecto-angular
 3.	ng serve
+#### Dependencias de Angular CLI
+Para instalar las dependencias necesarias para el proyecto Angular, ejecuta:
+1. npm install @angular/material @angular/cdk @angular/animations
+2. npm install @auth0/angular-jwt
+3. npm install keycloak-angular keycloak-js
+#### Pruebas de Angular
+1. Para ejecutar las pruebas unitarias de Angular:
+`ng test`
+2. Para ejecutar pruebas end-to-end:
+`ng e2e`
 
 ## Configuración de Visual Studio 2022 con .NET MVC
 1. Descarga Visual Studio 2022 desde [https://visualstudio.microsoft.com/vs/](https://visualstudio.microsoft.com/vs/) 
@@ -49,6 +59,14 @@ Para crear un proyecto angular:
 Para crear un proyecto:
 1.	Abre Visual Studio y selecciona Crear un nuevo proyecto.
 2.	Elige Aplicación web ASP.NET Core y sigue las instrucciones para configurar el proyecto.
+#### Dependencias de .NET 
+Para agregar las dependencias necesarias al proyecto .NET, usa el Administrador de Paquetes NuGet para instalar:
+1. Microsoft.EntityFrameworkCore
+2. Microsoft.EntityFrameworkCore.SqlServer
+3. Microsoft.AspNetCore.Authentication.JwtBearer
+#### Pruebas de .NET
+Para ejecutar pruebas en el proyecto .NET, utiliza el Test Explorer en Visual Studio o ejecuta:
+`dotnet test`
 
 ## Configuración de Intellij IDEA
 1. Descarga IntelliJ IDEA desde [https://www.jetbrains.com/idea/download/](https://www.jetbrains.com/idea/download/) 
@@ -74,7 +92,44 @@ Para crear un proyecto:
 ### Configuración de Base de Datos (PostgreSQL)
 1.	Correr en la terminal:
 `docker run -d --name postgres -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=mi_base_de_datos -p 5432:5432 postgres`
-	
+
+### Ejecución de Contenedores Docker
+Para iniciar todos los servicios necesarios, puedes crear un archivo docker-compose.yml para implementarlo en el proyecto
+con el siguiente contenido:
+version: '3' 
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+    ports:
+      - "8080:8080"
+    command: start-dev
+
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=mi_base_de_datos
+    ports:
+      - "5432:5432"
+
+Luego ejecuta:
+`docker-compose up -d`
+
+Para detener el servicio:
+`docker-compose down`
+
+## Pruebas de Integración
+Para probar la integración entre los servicios:
+1. Asegúrate de que todos los contenedores Docker estén en ejecución.
+2. Inicia tu aplicación Angular y .NET.
+3. Intenta realizar un inicio de sesión utilizando Keycloak.
+4. Verifica que puedas acceder a los endpoints protegidos de tu API .NET.
+5. Comprueba que los datos se estén guardando correctamente en la base de datos PostgreSQL.
+
 ## Conclusión
 Sigue estas instrucciones para configurar y conectar los servicios necesarios el proyecto. 
 

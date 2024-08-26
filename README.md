@@ -85,7 +85,7 @@ Para crear un proyecto:
 
 ### Configuración de Keycloak 
 1.	Asegurate de tener Docker abierto y en la terminal ejecuta: 
-`docker run -d --name keycloak -p 8080:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin quay.io/keycloak/keycloak:latest start-dev` 
+`docker run -d --name keycloak -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin_password quay.io/keycloak/keycloak:latest start-dev` 
 2.	Verificar que el contenedor este corriendo:
 `docker ps`
 

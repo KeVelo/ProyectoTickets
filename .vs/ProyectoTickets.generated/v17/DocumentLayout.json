@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\kevke\\ProyectoTickets\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D65163A6-369D-4140-9659-0BF3A41D619F}|1er sprint docker\\ProyectoTickets\\ProyectoTickets.csproj|c:\\users\\kevke\\proyectotickets\\1er sprint docker\\proyectotickets\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D65163A6-369D-4140-9659-0BF3A41D619F}|1er sprint docker\\ProyectoTickets\\ProyectoTickets.csproj|solutionrelative:1er sprint docker\\proyectotickets\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\kevke\\ProyectoTickets\\1er sprint docker\\ProyectoTickets\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "1er sprint docker\\ProyectoTickets\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\kevke\\ProyectoTickets\\1er sprint docker\\ProyectoTickets\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "1er sprint docker\\ProyectoTickets\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-29T03:58:46.783Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

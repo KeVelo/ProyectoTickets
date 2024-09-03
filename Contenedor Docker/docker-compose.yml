@@ -1,0 +1,57 @@
+services:
+  # Servicio para la base de datos SQL Server
+  sqlserver_db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sqlserver_db
+    environment:
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    networks:
+      - backend_network
+
+  # Servicio para .NET MVC
+  dotnet_api:
+    image: your_dotnet_image
+    container_name: dotnet_api
+    depends_on:
+      - sqlserver_db
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver_db;Database=conciertos_db;User Id=kevke;Password=; # Cambia 'YourPas' por tu contraseña real.
+    ports:
+      - "5000:80"
+    networks:
+      - backend_network
+
+  # Servicio para Spring Boot
+  spring_api:
+    image: your_springboot_image
+    container_name: spring_api
+    depends_on:
+      - sqlserver_db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:sqlserver://sqlserver_db:1433;databaseName=conciertos_db
+      - SPRING_DATASOURCE_USERNAME=kevke
+      - SPRING_DATASOURCE_PASSWORD= # Cambia 'YourPassword' por tu contraseña real.
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.microsoft.sqlserver.jdbc.SQLServerDriver
+    ports:
+      - "8080:8080"
+    networks:
+      - backend_network
+
+  # Servicio para FastAPI
+  fastapi:
+    image: your_fastapi_image
+    container_name: fastapi
+    depends_on:
+      - sqlserver_db
+    environment:
+      - DATABASE_URL=mssql+pyodbc://kevke:@sqlserver_db/conciertos_db?driver=ODBC+Driver+17+for+SQL+Server
+    ports:
+      - "8000:8000"
+    networks:
+      - backend_network
+
+networks:
+  backend_network:

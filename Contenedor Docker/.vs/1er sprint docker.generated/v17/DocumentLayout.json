@@ -1,0 +1,143 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{90C36EE5-01E2-4179-AD4D-C62A7AF6C970}|ProyectoTickets\\ProyectoTickets.csproj|c:\\users\\ffose\\downloads\\proyectotickets-kevin\\contenedor docker\\proyectotickets\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{90C36EE5-01E2-4179-AD4D-C62A7AF6C970}|ProyectoTickets\\ProyectoTickets.csproj|solutionrelative:proyectotickets\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90C36EE5-01E2-4179-AD4D-C62A7AF6C970}|ProyectoTickets\\ProyectoTickets.csproj|c:\\users\\ffose\\downloads\\proyectotickets-kevin\\contenedor docker\\proyectotickets\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90C36EE5-01E2-4179-AD4D-C62A7AF6C970}|ProyectoTickets\\ProyectoTickets.csproj|solutionrelative:proyectotickets\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90C36EE5-01E2-4179-AD4D-C62A7AF6C970}|ProyectoTickets\\ProyectoTickets.csproj|c:\\users\\ffose\\downloads\\proyectotickets-kevin\\contenedor docker\\proyectotickets\\controllers\\artistascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90C36EE5-01E2-4179-AD4D-C62A7AF6C970}|ProyectoTickets\\ProyectoTickets.csproj|solutionrelative:proyectotickets\\controllers\\artistascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90C36EE5-01E2-4179-AD4D-C62A7AF6C970}|ProyectoTickets\\ProyectoTickets.csproj|c:\\users\\ffose\\downloads\\proyectotickets-kevin\\contenedor docker\\proyectotickets\\models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90C36EE5-01E2-4179-AD4D-C62A7AF6C970}|ProyectoTickets\\ProyectoTickets.csproj|solutionrelative:proyectotickets\\models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90C36EE5-01E2-4179-AD4D-C62A7AF6C970}|ProyectoTickets\\ProyectoTickets.csproj|c:\\users\\ffose\\downloads\\proyectotickets-kevin\\contenedor docker\\proyectotickets\\models\\artista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90C36EE5-01E2-4179-AD4D-C62A7AF6C970}|ProyectoTickets\\ProyectoTickets.csproj|solutionrelative:proyectotickets\\models\\artista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90C36EE5-01E2-4179-AD4D-C62A7AF6C970}|ProyectoTickets\\ProyectoTickets.csproj|c:\\users\\ffose\\downloads\\proyectotickets-kevin\\contenedor docker\\proyectotickets\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{90C36EE5-01E2-4179-AD4D-C62A7AF6C970}|ProyectoTickets\\ProyectoTickets.csproj|solutionrelative:proyectotickets\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\ProyectoTickets\\Migrations\\20240905023645_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ProyectoTickets\\Migrations\\20240905023645_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 100,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "20240905023645_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\ProyectoTickets\\Migrations\\20240905023645_InitialCreate.cs",
+              "RelativeDocumentMoniker": "ProyectoTickets\\Migrations\\20240905023645_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\ProyectoTickets\\Migrations\\20240905023645_InitialCreate.cs",
+              "RelativeToolTip": "ProyectoTickets\\Migrations\\20240905023645_InitialCreate.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAxwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-05T02:36:46.091Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\ProyectoTickets\\appsettings.json",
+              "RelativeDocumentMoniker": "ProyectoTickets\\appsettings.json",
+              "ToolTip": "C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\ProyectoTickets\\appsettings.json",
+              "RelativeToolTip": "ProyectoTickets\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-09-05T02:17:27.336Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ArtistasController.cs",
+              "DocumentMoniker": "C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\ProyectoTickets\\Controllers\\ArtistasController.cs",
+              "RelativeDocumentMoniker": "ProyectoTickets\\Controllers\\ArtistasController.cs",
+              "ToolTip": "C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\ProyectoTickets\\Controllers\\ArtistasController.cs",
+              "RelativeToolTip": "ProyectoTickets\\Controllers\\ArtistasController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-05T02:15:58.177Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\ProyectoTickets\\Models\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "ProyectoTickets\\Models\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\ProyectoTickets\\Models\\AppDbContext.cs",
+              "RelativeToolTip": "ProyectoTickets\\Models\\AppDbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-05T02:15:23.559Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Artista.cs",
+              "DocumentMoniker": "C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\ProyectoTickets\\Models\\Artista.cs",
+              "RelativeDocumentMoniker": "ProyectoTickets\\Models\\Artista.cs",
+              "ToolTip": "C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\ProyectoTickets\\Models\\Artista.cs",
+              "RelativeToolTip": "ProyectoTickets\\Models\\Artista.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-05T02:12:19.768Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\ProyectoTickets\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "ProyectoTickets\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\ProyectoTickets\\Properties\\launchSettings.json",
+              "RelativeToolTip": "ProyectoTickets\\Properties\\launchSettings.json",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAwwCYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-09-05T02:11:01.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\ProyectoTickets\\Program.cs",
+              "RelativeDocumentMoniker": "ProyectoTickets\\Program.cs",
+              "ToolTip": "C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\ProyectoTickets\\Program.cs",
+              "RelativeToolTip": "ProyectoTickets\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-05T02:09:44.067Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

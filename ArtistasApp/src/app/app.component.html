@@ -1,2 +1,86 @@
+<nav class="navbar navbar-expand-lg" style="background-color: #424182;">
+    <div class="container-fluid">
+        <!-- Título del navbar -->
+        <a class="navbar-brand" href="#" style="color: #FFFFFF; font-size: 35px; font-weight: bold;">ConsierTop</a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Barra de búsqueda sin borde, con ícono dentro y placeholder blanco -->
+            <form class="d-flex me-auto" role="search">
+                <div class="input-group">
+                    <span class="input-group-text bg-transparent border-0">
+                        <i class="bi bi-search"></i>
+                    </span>
+                    <input class="form-control rounded-pill" type="search" placeholder="Buscar..." aria-label="Search">
+                </div>
+            </form>
+            
+            <ul class="navbar-nav mb-2 mb-lg-0 ms-4">
+                <!-- Conciertos -->
+                <li class="nav-item me-3">
+                    <a class="nav-link" href="#" style="color: white;">
+                        <i class="bi bi-calendar-event me-1" style="color: #90752A;"></i> CONCIERTOS
+                    </a>
+                </li>
+                <!-- Mis Boletos -->
+                <li class="nav-item me-3">
+                    <a class="nav-link" href="#" style="color: white;">
+                        <i class="bi bi-ticket-perforated me-1" style="color: #90752A;"></i> MIS BOLETOS
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="d-flex ms-3">
+                <!-- Botón Iniciar sesión con ícono de perfil incluido -->
+                <a href="#" class="btn btn-login rounded-pill me-3">
+                    <i class="bi bi-person-circle me-2" style="color: #90752A;"></i> Iniciar sesión
+                </a>
+                <!-- Botón Registrarse con color más oscuro, sin borde y mayor ancho -->
+                <a href="#" class="btn btn-register rounded-pill">Registrarse</a>
+            </div>
+        </div>
+    </div>
+</nav>
 
-<router-outlet></router-outlet>
+    <!-- Content -->
+    <main class="flex-grow-1">
+        <app-pagina-principal></app-pagina-principal>
+        <router-outlet></router-outlet>
+    </main>
+<!-- Footer -->
+<footer class="footer navbar navbar-expand-lg" style="background-color: #424182;">
+    <div class="container-fluid">
+        <!-- Títulos de los enlaces -->
+        <ul class="navbar-nav mb-2 mb-lg-0 ms-4">
+            <!-- Inicio -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" style="color: white;">
+                    <i class="bi bi-house-door me-1" style="color: #90752A;"></i> INICIO
+                </a>
+            </li>
+            <!-- Mis conciertos -->
+            <li class="nav-item me-3">
+                <a class="nav-link" href="#" style="color: white;">
+                    <i class="bi bi-calendar-event me-1" style="color: #90752A;"></i> CONCIERTOS
+                </a>
+            </li>
+            <!-- Boletos -->
+            <li class="nav-item me-3">
+                <a class="nav-link" href="#" style="color: white;">
+                    <i class="bi bi-ticket-perforated me-1" style="color: #90752A;"></i> BOLETOS
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</footer>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+
+
+  
+  
+

@@ -1,0 +1,168 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #eaeaea;
+  overflow-x: hidden;
+}
+
+/* Carousel section */
+.carousel-section {
+  position: relative;
+  width: 100%;
+}
+
+.carousel {
+  position: relative;
+  text-align: center;
+}
+
+.carousel-image img {
+  width: 100%;
+  height: 611px; /* Ocupa todo el contenedor de alto */
+  object-fit: cover; /* Ajusta la imagen para cubrir el área sin deformar */
+  display: none;
+}
+
+.carousel-image img.active {
+  display: block;
+}
+
+/* Botón "Comprar boletos" */
+.buy-tickets-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 52px; /* Posición inicial a la izquierda */
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 25px;
+}
+
+/* Carrousel dots */
+.carousel-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.carousel-dots .dot {
+  height: 10px;
+  width: 10px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.carousel-dots .active {
+  background-color: gray;
+}
+
+/* Divider style */
+.divider {
+  background-color: #424182;
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.divider h2 {
+  color: white;
+  margin: 0;
+  font-size: 18px;
+  padding-left: 50px;
+  text-align: left;
+}
+
+/* Concerts section */
+.concerts-section {
+  background-color: #c2b4e6;
+  padding: 0;
+  text-align: center;
+}
+
+.concert-cards-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 25px;
+  padding-bottom: 2%;
+  min-height: calc(10vh - 0px);
+  margin-bottom: 0px;
+  position: relative;
+}
+
+.concert-cards-container {
+  overflow-x: auto; /* Permite el desplazamiento horizontal */
+  width: 90%;
+  display: flex;
+  justify-content: center; /* Centra las tarjetas cuando no hay scroll */
+}
+
+.concert-cards {
+  display: inline-flex; /* Inline-flex para mantener el comportamiento de flujo */
+  gap: 20px; /* Ajusta el gap según las necesidades */
+  justify-content: center; /* Mantiene las tarjetas centradas */
+}
+
+.concert-card {
+  background-color: white;
+  padding: 0px;
+  border-radius: 5px;
+  width: 150px;
+  text-align: center;
+}
+
+.concert-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.buy-btn {
+  padding: 6px 10px;
+  background-color: #424182;
+  color: white;
+  border: none;
+  width: 100%;
+  border-radius: 0px;
+  cursor: pointer;
+}
+
+/* Arrows */
+.arrow {
+  color: #90752A;
+  background-color: transparent;
+  border: none;
+  font-size: 27px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.arrow.right {
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrow.left {
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 767px) {
+  .buy-tickets-btn {
+    left: calc(52px + 10%); /* Ajusta la posición para pantallas pequeñas */
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+}

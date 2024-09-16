@@ -6,6 +6,13 @@ import { AppComponent } from './app.component';
 import { ArtistasListComponent } from './cliente/artistas-list/artistas-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PaginaPrincipalComponent } from './cliente/pagina-principal/pagina-principal.component';
+import { InicioSesionComponent } from './cliente/inicio-sesion/inicio-sesion.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { HeaderComponent } from './compartido/header/header.component';
+import { FooterComponent } from './compartido/footer/footer.component';
+import { RegistroComponent } from './cliente/registro/registro.component';
+import { ProcesoCompraComponent } from './cliente/proceso-compra/proceso-compra.component';
 
 @NgModule({
 
@@ -13,7 +20,13 @@ import { PaginaPrincipalComponent } from './cliente/pagina-principal/pagina-prin
   declarations: [
     AppComponent,
     ArtistasListComponent,
-    PaginaPrincipalComponent
+    PaginaPrincipalComponent,
+    InicioSesionComponent,
+
+    HeaderComponent,
+    FooterComponent,
+    RegistroComponent,
+    ProcesoCompraComponent
   ],
 
    // Importamos los módulos necesarios
@@ -22,6 +35,8 @@ import { PaginaPrincipalComponent } from './cliente/pagina-principal/pagina-prin
     AppRoutingModule,
     HttpClientModule,// Necesario para hacer peticiones HTTP
     BrowserAnimationsModule,   
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './compartido/header/header.component';
 import { FooterComponent } from './compartido/footer/footer.component';
 import { RegistroComponent } from './cliente/registro/registro.component';
+import { ProcesoCompraComponent } from './cliente/proceso-compra/proceso-compra.component';
 
 @NgModule({
 
@@ -24,7 +25,8 @@ import { RegistroComponent } from './cliente/registro/registro.component';
 
     HeaderComponent,
     FooterComponent,
-    RegistroComponent
+    RegistroComponent,
+    ProcesoCompraComponent
   ],
 
    // Importamos los módulos necesarios

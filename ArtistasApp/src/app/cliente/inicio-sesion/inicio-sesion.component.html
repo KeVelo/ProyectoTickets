@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Incluye Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Incluye el CSS personalizado -->
+    <link href="inicio-sesion.component.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Ajusta el container para usar toda la pantalla -->
+    <div class="container-fluid h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-12 col-md-4">
+                <div class="form-container">
+                    
+                    <h2>Ingresa con tu cuenta ConcierTop</h2>
+                    <h3>Email</h3>
+                    <form (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <input type="text" class="form-control"  name="usuario" [(ngModel)]="email" required>
+                        </div>
+                        <h3>Contraseña</h3>
+                        <div class="form-group">
+                            <input type="password" class="form-control"  name="contrasena" [(ngModel)]="password" required>
+                        </div>
+                        <div class="options">
+                            
+                            <a href="#">Olvidé mi contraseña</a>
+                        </div>
+                        <a routerLink="">
+                            <button type="submit" class="btn btn-primary">ENTRAR</button>
+                        </a>
+                        
+                        <div></div>
+                        <a routerLink="/registro">
+                            <button type="submit" class="btn btn-outline-primary">REGISTRARSE</button>
+                        </a>
+                       
+                      
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Incluye Bootstrap JS y dependencias -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

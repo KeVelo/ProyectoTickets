@@ -5,6 +5,7 @@ body {
   padding: 0;
   background-color: #eaeaea;
   overflow-x: hidden;
+  
 }
 
 /* Carousel section */
@@ -64,6 +65,7 @@ body {
 .carousel-dots .active {
   background-color: gray;
 }
+
 
 /* Divider style */
 .divider {

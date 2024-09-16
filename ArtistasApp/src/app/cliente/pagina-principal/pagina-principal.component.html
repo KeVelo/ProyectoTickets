@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="pagina-principal.component.css">
 </head>
 <body>
+    <!-- Llamada al componente Header -->
+    <app-header></app-header>
+
+    <!-- Sección del carrusel -->
     <section class="carousel-section">
         <div class="carousel">
           <div class="carousel-image">
@@ -17,9 +21,10 @@
             <span *ngFor="let image of carouselImages; let i = index" class="dot" [class.active]="i === currentSlide" (click)="showSlide(i)"></span>
           </div>
         </div>
-      </section>
-      
-      <section class="concerts-section">
+    </section>
+
+    <!-- Sección de conciertos -->
+    <section class="concerts-section">
         <div class="divider">
           <h2>Nuestros Conciertos</h2>
         </div>
@@ -39,10 +44,12 @@
             <i class="bi bi-chevron-right fs-1"></i>
           </button>
         </div>
-      </section>
-      
-      
-      
+    </section>
+
+    <!-- Llamada al componente Footer -->
+    <app-footer></app-footer>
+
+    <!-- Angular Router Outlet -->
+    <router-outlet></router-outlet>
 </body>
 </html>
-

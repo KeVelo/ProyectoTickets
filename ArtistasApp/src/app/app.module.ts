@@ -13,6 +13,7 @@ import { HeaderComponent } from './compartido/header/header.component';
 import { FooterComponent } from './compartido/footer/footer.component';
 import { RegistroComponent } from './cliente/registro/registro.component';
 import { ProcesoCompraComponent } from './cliente/proceso-compra/proceso-compra.component';
+import { SeleccionBoletosComponent } from './cliente/seleccion-boletos/seleccion-boletos.component';
 
 @NgModule({
 
@@ -26,7 +27,8 @@ import { ProcesoCompraComponent } from './cliente/proceso-compra/proceso-compra.
     HeaderComponent,
     FooterComponent,
     RegistroComponent,
-    ProcesoCompraComponent
+    ProcesoCompraComponent,
+    SeleccionBoletosComponent
   ],
 
    // Importamos los módulos necesarios

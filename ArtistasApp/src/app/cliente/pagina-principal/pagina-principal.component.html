@@ -36,7 +36,10 @@
             <div class="concert-cards">
               <div class="concert-card" *ngFor="let concert of visibleConcerts">
                 <img [src]="concert.imgSrc" [alt]="concert.title">
-                <button class="buy-btn">Comprar</button>
+                <a routerLink="/seleccion">
+                  <button class="buy-btn">Comprar</button>
+                </a>
+                
               </div>
             </div>
           </div>

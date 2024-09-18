@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concerts Carousel</title>
+    <link rel="stylesheet" href="seleccion-boletos.component.css">
+</head>
+<body>
+    <!-- Llamada al componente Header -->
+    <app-header></app-header>
+    <img src="assets/coldplay-seleccion2.png" class="top-image" alt="Top Image">
+    
+    <!-- Sección principal que contiene las dos secciones -->
+    <main class="main-container">
+        <!-- Sección para los detalles del evento -->
+        <section class="event-section">
+            <img src="assets/coldplay-seleccion.png" class="event-image" alt="Coldplay event">
+            <div class="event-details">
+                <h2>Detalles del evento</h2>
+                <div class="divider"></div>
+                <h4>Coldplay</h4>
+                <div class="details">
+                    <p><strong>Lugar</strong></p>
+                    <select>
+                        <option>Teatro presidente</option>
+                    </select>
+
+                    <p><strong>Fecha</strong></p>
+                    <select>
+                        <option>sábado 21 de agosto</option>
+                    </select>
+
+                    <h3>Horarios</h3>
+                    <div class="divider"></div>
+                    <p><strong>Puertas abren:</strong> 7:00 pm</p>
+                    <p><strong>Inicio del evento:</strong> 8:00 pm</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección para la selección de boletos -->
+        <section class="tickets-section">
+            <h2>Selecciona tus boletos</h2>
+            <p class="instructions">
+                Estimado usuario, solamente puedes realizar una compra de máximo 5 boletos. 
+            </p>
+            <p class="instructions">
+                Verifica en el mapa la localidad de tu preferencia y selecciónala.
+            </p>
+            
+            
+            <!-- Formulario de selección de boletos -->
+            <div class="ticket-selection">
+                <label for="localidades">Localidades</label>
+                <select id="localidades">
+                    <option>PLATINUM - $85.00</option>
+                    <option>VIP - $120.00</option>
+                    <option>GENERAL - $45.00</option>
+                </select>
+
+                <label for="boletos">Número de boletos</label>
+                <select id="boletos">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+
+                
+            </div>
+            <button class="buy-button">Comprar</button>
+            
+            <!-- Imagen del mapa de asientos -->
+            <img src="assets/escenario.png" class="seating-map" alt="Seating map">
+        </section>
+    </main>
+
+    <!-- Llamada al componente Footer -->
+    <app-footer></app-footer>
+
+    <!-- Angular Router Outlet -->
+    <router-outlet></router-outlet>
+</body>
+</html>

@@ -1,26 +1,78 @@
+/* Contenedor de artistas */
 .artistas-container {
-    text-align: center;
-    font-family: Arial, sans-serif;
+  display: flex;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Se adapta automáticamente */
+  gap: 20px;
+  padding: 20px;
+
+  flex-wrap: wrap;  /* Las tarjetas se ajustan en varias filas */
+  justify-content: center; /* Centra las tarjetas en la fila si no se completan 4 */
+}
+
+
+
+/* Estilo del título */
+.artistas-container h1 {
+  width: 100%;
+  text-align: center; /* Título alineado a la izquierda */
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+
+/* Tarjeta de artista */
+.artista-card {
+  background-color: #424182;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px white;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+
+}
+
+.artista-card:hover {
+  transform: scale(1.05);
+}
+
+/* Imagen del artista */
+.artista-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Detalles del artista */
+.artista-details {
+  padding: 15px;
+}
+
+.artista-details h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #eee8e8
+}
+
+.artista-details p {
+  font-size: 1rem;
+  color: #eee8e8;
+  margin-bottom: 5px;
+}
+
+/* Estilo para mejorar la adaptación en móviles */
+@media (max-width: 768px) {
+  .artistas-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajusta mejor para pantallas pequeñas */
   }
-  
-  .artista-card {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-  }
-  
+
   .artista-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-right: 20px;
+    height: 150px; /* Reduce el tamaño de la imagen en pantallas pequeñas */
   }
-  
-  .artista-details {
-    text-align: left;
+
+  .artista-details h2 {
+    font-size: 1.2rem; /* Reduce el tamaño del texto para móviles */
   }
-  
+
+  .artista-details p {
+    font-size: 0.9rem;
+  }
+}

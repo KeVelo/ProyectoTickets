@@ -30,7 +30,8 @@ namespace ProyectoTickets.Controllers
         public async Task<ActionResult<IEnumerable<Artista>>> GetArtistas()
         {
 
-            // Devuelve una lista de todos los artistas de la base de datos de forma asíncrona
+            // Devuelve una lista de todos los artistas de la base de datos de forma asíncrona y esto es una prueba
+            // holissssssssssssssssssssssssssssssssssssssssssssssssssssss
             return await _context.Artistas.ToListAsync();
         }
     }

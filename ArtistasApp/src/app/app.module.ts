@@ -14,6 +14,13 @@ import { FooterComponent } from './compartido/footer/footer.component';
 import { RegistroComponent } from './cliente/registro/registro.component';
 import { ProcesoCompraComponent } from './cliente/proceso-compra/proceso-compra.component';
 import { SeleccionBoletosComponent } from './cliente/seleccion-boletos/seleccion-boletos.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { DetalleListaComponent } from './admin/detalle-lista/detalle-lista.component';
+import { DetalleBoletosComponent } from './admin/detalle-boletos/detalle-boletos.component';
+import { AgregarConciertoComponent } from './admin/agregar-concierto/agregar-concierto.component';
+import { TotalBoletosComponent } from './admin/total-boletos/total-boletos.component';
+import { NuevoAdminComponent } from './admin/nuevo-admin/nuevo-admin.component';
+import { DashboardLayoutComponent } from './compartido/dashboard-layout/dashboard-layout.component';
 
 @NgModule({
 
@@ -28,7 +35,14 @@ import { SeleccionBoletosComponent } from './cliente/seleccion-boletos/seleccion
     FooterComponent,
     RegistroComponent,
     ProcesoCompraComponent,
-    SeleccionBoletosComponent
+    SeleccionBoletosComponent,
+    DashboardComponent,
+    DetalleListaComponent,
+    DetalleBoletosComponent,
+    AgregarConciertoComponent,
+    TotalBoletosComponent,
+    NuevoAdminComponent,
+    DashboardLayoutComponent
   ],
 
    // Importamos los módulos necesarios

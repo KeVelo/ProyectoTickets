@@ -22,6 +22,20 @@ import { TotalBoletosComponent } from './admin/total-boletos/total-boletos.compo
 import { NuevoAdminComponent } from './admin/nuevo-admin/nuevo-admin.component';
 import { DashboardLayoutComponent } from './compartido/dashboard-layout/dashboard-layout.component';
 
+
+//crud
+
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 @NgModule({
 
    // Declaramos los componentes que usamos en nuestra app
@@ -43,6 +57,9 @@ import { DashboardLayoutComponent } from './compartido/dashboard-layout/dashboar
     TotalBoletosComponent,
     NuevoAdminComponent,
     DashboardLayoutComponent
+
+
+    
   ],
 
    // Importamos los módulos necesarios
@@ -53,6 +70,21 @@ import { DashboardLayoutComponent } from './compartido/dashboard-layout/dashboar
     BrowserAnimationsModule,   
     FormsModule,
     ReactiveFormsModule,
+
+
+
+    MatTableModule,
+    MatButtonModule,
+    MatSnackBarModule,
+
+    MatToolbarModule,
+    MatIconModule,
+    MatDialogModule,
+
+    MatPaginatorModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

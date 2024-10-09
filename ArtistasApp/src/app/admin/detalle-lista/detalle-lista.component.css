@@ -1,0 +1,41 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  /* Estilo principal adaptado para un contenedor más pequeño */
+  .main-body {
+    padding-top: 10px;          /* Reducir el padding superior */
+    margin: 0 auto ;             /* Centrar el contenido dentro del contenedor */
+    max-width: 980px;           /* Reducir el ancho máximo */
+    padding-left: 15px;         /* Agregar padding a los lados */
+    padding-right: 15px;        /* Agregar padding a los lados */
+    box-sizing:border-box;     /* Incluir padding dentro del ancho total */
+  }
+  
+  /* Ajustes para el mat-toolbar */
+  mat-toolbar {
+    width: 90%;                /* Reducir el ancho a un 90% del contenedor */
+    margin: 0 auto;            /* Centrar la barra en el contenedor */
+    max-width: 950px;         /* Limitar el ancho máximo */
+    border-radius: 8px;        /* Opcional: Redondear los bordes del toolbar */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);  /* Añadir sombra para mejor visualización */
+  }
+  
+  
+  
+  
+  /* Ajuste del campo de formulario */
+  .main-body mat-form-field {
+    width: 100%;                /* Hacer que los campos de formulario se adapten al contenedor */
+  }
+  
+  /* Alinear las acciones con un espaciado reducido */
+  .action {
+    display: flex;
+    gap: 3px;                   /* Reducir el espaciado entre los botones */
+  }
+  
+  mat-toolbar button {
+    background-color: #c2b4e6; /* Color de fondo morado pastel */
+    margin-left: 10px;
+  }

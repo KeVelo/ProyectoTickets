@@ -7,6 +7,10 @@ import { RegistroComponent } from './cliente/registro/registro.component';
 import { SeleccionBoletosComponent } from './cliente/seleccion-boletos/seleccion-boletos.component';
 import { ProcesoCompraComponent } from './cliente/proceso-compra/proceso-compra.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { TotalBoletosComponent } from './admin/total-boletos/total-boletos.component';
+import { DetalleBoletosComponent } from './admin/detalle-boletos/detalle-boletos.component';
+import { DetalleListaComponent } from './admin/detalle-lista/detalle-lista.component';
+
 
 const routes: Routes = [
   { path: 'artistas', component: ArtistasListComponent }, // Ruta para el componente de artistas
@@ -17,6 +21,9 @@ const routes: Routes = [
   { path: 'compra', component: ProcesoCompraComponent }, // Ruta para el componente de proceso compra
 
   { path: 'dashboard', component: DashboardComponent }, // Ruta para el componente de artistas
+  { path: 'vendido', component: TotalBoletosComponent }, // Ruta para el componente de artistas
+  { path: 'totalboletos', component: DetalleBoletosComponent }, // Ruta para el componente de artistas
+  { path: 'lista', component: DetalleListaComponent }, // Ruta para el componente de artistas
   { path: '', component: PaginaPrincipalComponent }, // Ruta por defecto que muestra PaginaPrincipalComponent
   { path: '**', redirectTo: '' } // Redirige a la ruta por defecto para cualquier ruta no reconocida
 ];

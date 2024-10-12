@@ -28,4 +28,20 @@ export class ArtistasListComponent implements OnInit {
       console.log('Error al obtener los datos', error);
     });
   }
+
+  //////
+
+  getImagenPorId(IdArtista: number): string {
+    switch (IdArtista) {
+      case 1:
+        return 'assets/concert2.jpg';
+      case 2:
+        return 'assets/escenario.jpg';
+      case 3:
+        return 'assets/concert3.jpg';
+      default:
+        return 'assets/concert1.jpg';
+    }
+  }
+  
 }

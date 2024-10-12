@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4WRHvzxtO2c=",
+  "dgSpecHash": "aplnz45lJ3c=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\ProyectoTickets\\ProyectoTickets.csproj",
+  "projectFilePath": "C:\\Users\\ffose\\OneDrive\\Documentos\\GitHub\\ProyectoTickets\\Contenedor Docker\\ProyectoTickets\\ProyectoTickets.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ffose\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\ffose\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

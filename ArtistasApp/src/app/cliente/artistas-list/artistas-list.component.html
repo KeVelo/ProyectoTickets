@@ -1,15 +1,27 @@
-<div class="artistas-container">
-    <!-- Bucle que recorre cada artista en el array 'artistas' -->
-    <h1>Esta es la lista de artistas</h1>
-    <div *ngFor="let artista of artistas" class="artista-card">
-      <img src="assets/imagen_artista.jpg" alt="Imagen del artista" class="artista-img">
-      <div class="artista-details">
-        <h2>{{ artista.nombre }}</h2>
-        <p>Lugar: {{ artista.lugar }}</p>
-        <p>Fecha: {{ artista.fechaEvento | date }}</p>
-        <p>Hora de apertura: {{ artista.horaApertura }}</p>
-        <p>Hora de inicio: {{ artista.horaInicio }}</p>
+
+    <!-- Llamada al componente Header -->
+    <app-header></app-header>
+
+    <div class="artistas-container">
+      <!-- Bucle que recorre cada artista en el array 'artistas' -->
+      <h1>Nuestros Conciertos</h1>
+      <div *ngFor="let artista of artistas" class="artista-card">
+        <img src="getImagenPorId(artista.IdArtista)" alt="Imagen del artista" class="artista-img">
+
+        <div class="artista-details">
+          <h2>{{ artista.nombre }}</h2>
+          <p>Lugar: {{ artista.lugar }}</p>
+          <p>Fecha: {{ artista.fechaEvento | date }}</p>
+          <p>Hora de apertura: {{ artista.horaApertura }}</p>
+          <p>Hora de inicio: {{ artista.horaInicio }}</p>
+        </div>
       </div>
     </div>
-  </div>
+    
   
+ <!-- Llamada al componente Footer -->
+    <app-footer></app-footer>
+
+    <!-- Angular Router Outlet -->
+    <router-outlet></router-outlet>
+

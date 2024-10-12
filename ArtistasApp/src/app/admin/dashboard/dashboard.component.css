@@ -1,0 +1,51 @@
+.dashboard-cards-container {
+  display: flex;
+  gap: 50px; /* Espacio entre las tarjetas */
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card {
+  background-color: #3f2a89; /* Color de fondo */
+  border-radius: 8px;
+  padding: 20px;
+  width: 250px; /* Ancho de la tarjeta */
+  height: 155px; /* Altura de la tarjeta */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column; /* Cambia la dirección para colocar el texto y el icono en columna */
+  align-items: center; /* Alinea horizontalmente */
+  justify-content: center; /* Centra verticalmente */
+  text-align: center;
+  color: #ffffff;
+}
+
+.card-title {
+  font-size: 30px; /* Tamaño del texto principal */
+  font-weight: bold;
+}
+
+p {
+  font-size: 20px; /* Tamaño del texto del párrafo */
+  color: #ffffff;
+  margin-top: 0px; /* Espacio entre el título y el párrafo */
+}
+
+.icon {
+  font-size: 36px;
+  color: #90752A; /* Color dorado para los íconos */
+  margin-top: 0px; /* Espacio entre el párrafo y el icono */
+}

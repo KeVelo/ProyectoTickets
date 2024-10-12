@@ -15,7 +15,8 @@
         <div class="carousel">
           <div class="carousel-image">
             <img *ngFor="let image of carouselImages; let i = index" [src]="image.src" [alt]="image.alt" [class.active]="i === currentSlide">
-            <button class="buy-tickets-btn">Comprar boletos</button>
+            <button class="buy-tickets-btn" routerLink="/artistas">Comprar boletos</button>
+
           </div>
           <div class="carousel-dots">
             <span *ngFor="let image of carouselImages; let i = index" class="dot" [class.active]="i === currentSlide" (click)="showSlide(i)"></span>

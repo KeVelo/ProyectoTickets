@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\ProyectoTickets\\ProyectoTickets.csproj": {}
+    "C:\\Users\\ffose\\OneDrive\\Documentos\\GitHub\\ProyectoTickets\\Contenedor Docker\\ProyectoTickets\\ProyectoTickets.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\ProyectoTickets\\ProyectoTickets.csproj": {
+    "C:\\Users\\ffose\\OneDrive\\Documentos\\GitHub\\ProyectoTickets\\Contenedor Docker\\ProyectoTickets\\ProyectoTickets.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\ProyectoTickets\\ProyectoTickets.csproj",
+        "projectUniqueName": "C:\\Users\\ffose\\OneDrive\\Documentos\\GitHub\\ProyectoTickets\\Contenedor Docker\\ProyectoTickets\\ProyectoTickets.csproj",
         "projectName": "ProyectoTickets",
-        "projectPath": "C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\ProyectoTickets\\ProyectoTickets.csproj",
+        "projectPath": "C:\\Users\\ffose\\OneDrive\\Documentos\\GitHub\\ProyectoTickets\\Contenedor Docker\\ProyectoTickets\\ProyectoTickets.csproj",
         "packagesPath": "C:\\Users\\ffose\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ffose\\Downloads\\ProyectoTickets-kevin\\Contenedor Docker\\ProyectoTickets\\obj\\",
+        "outputPath": "C:\\Users\\ffose\\OneDrive\\Documentos\\GitHub\\ProyectoTickets\\Contenedor Docker\\ProyectoTickets\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ffose\\AppData\\Roaming\\NuGet\\NuGet.Config",

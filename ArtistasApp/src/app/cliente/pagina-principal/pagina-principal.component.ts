@@ -1,4 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ArtistasService } from 'src/app/services/artistas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pagina-principal',
@@ -7,30 +9,22 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class PaginaPrincipalComponent implements OnInit, OnDestroy {
   carouselImages = [
-    { src: 'assets/concert1.jpg', alt: 'Concert Image 1' },
-    { src: 'assets/concert2.jpg', alt: 'Concert Image 2' },
-    { src: 'assets/concert3.jpg', alt: 'Concert Image 3' }
+    { src: 'assets/carrusel/artic_monkeys.jpg', alt: 'Concert Image 1' },
+    { src: 'assets/carrusel/1975.jpg', alt: 'Concert Image 2' },
+    { src: 'assets/carrusel/cas.jpg', alt: 'Concert Image 3' }
   ];
 
-  concerts = [
-    { imgSrc: 'assets/coldplay.png', title: 'Coldplay' },
-    { imgSrc: 'assets/coldplay.png', title: 'Concert 2' },
-    { imgSrc: 'assets/coldplay.png', title: 'Concert 3' },
-    { imgSrc: 'assets/coldplay.png', title: 'Concert 4' },
-    { imgSrc: 'assets/coldplay.png', title: 'Concert 5' },
-    { imgSrc: 'assets/coldplay.png', title: 'Concert 6' },
-    { imgSrc: 'assets/coldplay.png', title: 'Concert 7' },
-    { imgSrc: 'assets/coldplay.png', title: 'Concert 8' }
-  ];
-
+  conciertos: any[] = [];
   currentSlide = 0;
   autoSlideInterval: any;
   currentConcertIndex = 0;
   visibleConcerts: any[] = [];
 
+  constructor(private artistasService: ArtistasService, private router: Router) {}
+
   ngOnInit(): void {
     this.autoSlide();
-    this.showConcerts();
+    this.obtenerConciertos();
   }
 
   ngOnDestroy(): void {
@@ -39,6 +33,8 @@ export class PaginaPrincipalComponent implements OnInit, OnDestroy {
 
   showSlide(index: number): void {
     this.currentSlide = index;
+    clearInterval(this.autoSlideInterval); // Detener el auto-slide al hacer clic
+    this.autoSlide(); // Reiniciar el auto-slide
   }
 
   autoSlide(): void {
@@ -47,23 +43,71 @@ export class PaginaPrincipalComponent implements OnInit, OnDestroy {
     }, 3000);
   }
 
+  obtenerConciertos(): void {
+    this.artistasService.getConciertos().subscribe(
+      data => {
+        // Filtrar conciertos que tienen una imagen asociada distinta al valor por defecto
+        this.conciertos = data.filter(concert => this.getImagenPorId(concert.id_concierto) !== null);
+        this.showConcerts();
+      },
+      error => {
+        console.error('Error al obtener los conciertos:', error);
+      }
+    );
+  }
+
   showConcerts(): void {
-    this.visibleConcerts = this.concerts.slice(this.currentConcertIndex, this.currentConcertIndex + 4);
+    this.visibleConcerts = this.conciertos.slice(this.currentConcertIndex, this.currentConcertIndex + 4);
   }
 
   scrollLeft(): void {
     this.currentConcertIndex -= 4;
     if (this.currentConcertIndex < 0) {
-      this.currentConcertIndex = this.concerts.length - 4; // Vuelve al final si llega al inicio
+      this.currentConcertIndex = Math.max(0, this.conciertos.length - 4); // Asegurarse de no tener índices negativos
     }
     this.showConcerts();
   }
 
   scrollRight(): void {
     this.currentConcertIndex += 4;
-    if (this.currentConcertIndex >= this.concerts.length) {
-      this.currentConcertIndex = 0; // Vuelve al inicio si llega al final
+    if (this.currentConcertIndex >= this.conciertos.length) {
+      this.currentConcertIndex = 0; // Reiniciar al inicio si llega al final
     }
     this.showConcerts();
+  }
+
+  getImagenPorId(idConcierto: number): string | null {
+    switch (idConcierto) {
+      case 1:
+        return 'assets/concierto-carrusel/artic_monkeys.jpg';
+      case 2:
+        return 'assets/concierto-carrusel/metallica.jpg';
+      case 3:
+        return 'assets/concierto-carrusel/karolg.jpg';
+      case 4:
+        return 'assets/concierto-carrusel/luis.jpg';
+      case 10:
+        return 'assets/concierto-carrusel/cas.jpg';
+      case 11:
+        return 'assets/concierto-carrusel/aespa.jpg';
+      case 12:
+        return 'assets/concierto-carrusel/stray.jpg';
+      case 13:
+        return 'assets/concierto-carrusel/mcr.jpg';
+      case 14:
+        return 'assets/concierto-carrusel/1975.jpg';
+      default:
+        return null; // Retornar null si no hay una imagen asociada
+    }
+  }
+  
+
+  comprar(idConcierto: number): void {
+    if (localStorage.getItem('jwtToken')) {
+      this.router.navigate(['/seleccion', idConcierto]);
+    } else {
+      alert('Debes iniciar sesión para poder comprar boletos.');
+      this.router.navigate(['/inicio-sesion']);
+    }
   }
 }

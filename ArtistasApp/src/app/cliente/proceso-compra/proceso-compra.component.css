@@ -11,9 +11,10 @@ body {
 /* Estilos de la imagen superior */
 .top-image {
     width: 100%;
-    height: 400px;
+    height: auto;
     display: block;
 }
+
 
 /* Divider style */
 .divider {

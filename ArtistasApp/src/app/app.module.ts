@@ -35,6 +35,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { RegistroAdminComponent } from './admin/registro-admin/registro-admin.component';
+import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
+import { SuggestionsComponent } from './cliente/suggestions/suggestions.component';
 
 @NgModule({
 
@@ -56,7 +59,10 @@ import { MatInputModule } from '@angular/material/input';
     AgregarConciertoComponent,
     TotalBoletosComponent,
     NuevoAdminComponent,
-    DashboardLayoutComponent
+    DashboardLayoutComponent,
+    RegistroAdminComponent,
+    LoginAdminComponent,
+    SuggestionsComponent
 
 
     

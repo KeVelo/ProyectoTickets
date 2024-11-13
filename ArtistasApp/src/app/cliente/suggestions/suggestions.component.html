@@ -1,0 +1,8 @@
+<div *ngIf="sugerencias.length > 0" class="suggestions-box">
+    <ul>
+      <li *ngFor="let sugerencia of sugerencias" (click)="onSelect(sugerencia)">
+        {{ sugerencia.nombre_concierto }}
+      </li>
+    </ul>
+  </div>
+  

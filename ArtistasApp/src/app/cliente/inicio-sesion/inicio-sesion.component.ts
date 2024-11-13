@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -6,14 +8,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./inicio-sesion.component.css']
 })
 export class InicioSesionComponent {
-  email: string = ''; // Inicializar con una cadena vacía
-  password: string = ''; // Inicializar con una cadena vacía
+  username: string = ''; // Cambiado de 'email' a 'username'
+  password: string = '';
 
+  constructor(private authService: AuthService, private router: Router) {}
 
-  onSubmit() {
-    // Manejar el envío del formulario
-    console.log('Email:', this.email);
-    console.log('Password:', this.password);
-
+  onSubmit(): void {
+    console.log('Datos de inicio de sesión enviados:', { username: this.username, password: this.password });
+    this.authService.login(this.username, this.password).subscribe(
+      response => {
+        console.log('Login exitoso:', response);
+        alert('Inicio de sesión exitoso');
+        this.authService.setToken(response.access_token);
+        this.router.navigate(['/home']); // Redirige a la página principal después del login
+      },
+      error => {
+        console.error('Error de autenticación:', error.message);
+        alert('Credenciales incorrectas o error en la autenticación. Por favor, inténtalo de nuevo.');
+      }
+    );
   }
 }

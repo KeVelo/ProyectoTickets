@@ -1,27 +1,22 @@
+<app-header></app-header>
 
-    <!-- Llamada al componente Header -->
-    <app-header></app-header>
-
-    <div class="artistas-container">
-      <!-- Bucle que recorre cada artista en el array 'artistas' -->
-      <h1>Nuestros Conciertos</h1>
-      <div *ngFor="let artista of artistas" class="artista-card">
-        <img src="getImagenPorId(artista.IdArtista)" alt="Imagen del artista" class="artista-img">
-
-        <div class="artista-details">
-          <h2>{{ artista.nombre }}</h2>
-          <p>Lugar: {{ artista.lugar }}</p>
-          <p>Fecha: {{ artista.fechaEvento | date }}</p>
-          <p>Hora de apertura: {{ artista.horaApertura }}</p>
-          <p>Hora de inicio: {{ artista.horaInicio }}</p>
-        </div>
-      </div>
-    </div>
+<div class="artistas-container">
+  <h1>Nuestros Conciertos</h1>
+  <!-- Recorre cada concierto y muestra la información -->
+  <div *ngFor="let concierto of conciertos" class="artista-card">
+    <img [src]="getImagenPorId(concierto.id_concierto)" alt="Imagen del concierto" class="artista-img">
     
-  
- <!-- Llamada al componente Footer -->
-    <app-footer></app-footer>
+    <div class="artista-details">
+      <h2>{{ concierto.nombre_concierto }}</h2>
+      <p>Lugar ID: {{ concierto.id_lugar }}</p> <!-- Muestra el ID del lugar -->
+      <p>Fecha: {{ concierto.fecha_concierto | date }}</p>
+      <p>Precio base: ${{ concierto.precio_base }}</p>
+      <!-- Botón de Comprar -->
+      <button (click)="comprar(concierto.id_concierto)" class="btn btn-comprar mt-3">Comprar</button>
+    </div>
+  </div>
+</div>
 
-    <!-- Angular Router Outlet -->
-    <router-outlet></router-outlet>
+<app-footer></app-footer>
 
+<router-outlet></router-outlet>

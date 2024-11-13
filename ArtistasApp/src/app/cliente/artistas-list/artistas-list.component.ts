@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ArtistasService } from 'src/app/artistas.service';
+import { ArtistasService } from 'src/app/services/artistas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-artistas-list',
@@ -7,41 +8,55 @@ import { ArtistasService } from 'src/app/artistas.service';
   styleUrls: ['./artistas-list.component.css']
 })
 export class ArtistasListComponent implements OnInit {
+  conciertos: any[] = [];
 
-  // Array para almacenar los artistas obtenidos del servicio
-  artistas: any[] = [];
+  constructor(private artistasService: ArtistasService, private router: Router) {}
 
-  // Inyectamos el servicio ArtistasService en el constructor
-  constructor(private artistasService: ArtistasService) { }
-
-  // Este método se ejecuta automáticamente cuando se inicia el componente
   ngOnInit(): void {
-    // Consumir el servicio y obtener los artistas desde la API
-    // Llamamos al método getArtistas del servicio
-    
-    this.artistasService.getArtistas().subscribe
-    // Si la petición es exitosa, guardamos los datos en el array 'artistas'
-    (data => {
-      this.artistas = data;
-       // Si hay un error, lo mostramos en la consola
-    }, error => {
-      console.log('Error al obtener los datos', error);
-    });
+    this.artistasService.getConciertos().subscribe(
+      data => {
+        this.conciertos = data;
+      },
+      error => {
+        console.error('Error al obtener los conciertos:', error);
+      }
+    );
   }
 
-  //////
-
-  getImagenPorId(IdArtista: number): string {
-    switch (IdArtista) {
-      case 1:
-        return 'assets/concert2.jpg';
-      case 2:
-        return 'assets/escenario.jpg';
-      case 3:
-        return 'assets/concert3.jpg';
-      default:
-        return 'assets/concert1.jpg';
+  // Método para manejar la compra y verificar autenticación
+  comprar(idConcierto: number): void {
+    if (localStorage.getItem('jwtToken')) {
+      // Si hay token, redirige a la página de selección de boletos
+      this.router.navigate(['/seleccion', idConcierto]);
+    } else {
+      // Si no hay token, redirige a inicio de sesión y muestra un mensaje
+      alert('Debes iniciar sesión para poder comprar boletos.');
+      this.router.navigate(['/inicio-sesion']);
     }
   }
-  
+
+  getImagenPorId(idConcierto: number): string {
+    switch (idConcierto) {
+      case 1:
+        return 'assets/carrusel/artic_monkeys.jpg';
+      case 2:
+        return 'assets/carrusel/metallica.jpg';
+      case 3:
+        return 'assets/carrusel/karolg.jpg';
+      case 4:
+        return 'assets/carrusel/luis.png';
+      case 10:
+        return 'assets/carrusel/cas.jpg';
+      case 11:
+        return 'assets/carrusel/aespa.jpg';
+      case 12:
+        return 'assets/carrusel/stray.jpg';
+      case 13:
+        return 'assets/carrusel/mcr.jpg';
+      case 14:
+        return 'assets/carrusel/1975.jpg';
+      default:
+        return 'assets/concierto2.jpg'; // Retornar null si no hay una imagen asociada
+    }
+  }
 }

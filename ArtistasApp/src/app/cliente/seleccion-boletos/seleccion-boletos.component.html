@@ -9,32 +9,22 @@
 <body>
     <!-- Llamada al componente Header -->
     <app-header></app-header>
-    <img src="assets/coldplay-seleccion2.png" class="top-image" alt="Top Image">
+    <img [src]="getImagenTopPorId(concierto?.id_concierto)" class="top-image" alt="Top Image">
     
     <!-- Sección principal que contiene las dos secciones -->
-    <main class="main-container">
+    <main class="main-container" *ngIf="concierto">
         <!-- Sección para los detalles del evento -->
         <section class="event-section">
-            <img src="assets/coldplay-seleccion.png" class="event-image" alt="Coldplay event">
+            <img [src]="getImagenPorId(concierto?.id_concierto)" class="event-image" alt="Concierto">
             <div class="event-details">
                 <h2>Detalles del evento</h2>
                 <div class="divider"></div>
-                <h4>Coldplay</h4>
+                <h4>{{ concierto.nombre_concierto }}</h4>
                 <div class="details">
-                    <p><strong>Lugar</strong></p>
-                    <select>
-                        <option>Teatro presidente</option>
-                    </select>
-
-                    <p><strong>Fecha</strong></p>
-                    <select>
-                        <option>sábado 21 de agosto</option>
-                    </select>
-
-                    <h3>Horarios</h3>
-                    <div class="divider"></div>
-                    <p><strong>Puertas abren:</strong> 7:00 pm</p>
-                    <p><strong>Inicio del evento:</strong> 8:00 pm</p>
+                    <p><strong>Lugar ID:</strong> {{ concierto.id_lugar }}</p> <!-- Muestra el ID del lugar -->
+                    <p><strong>Fecha:</strong> {{ concierto.fecha_concierto | date }}</p>
+                    <p><strong>Precio base:</strong> ${{ concierto.precio_base }}</p>
+                   
                 </div>
             </div>
         </section>
@@ -49,34 +39,36 @@
                 Verifica en el mapa la localidad de tu preferencia y selecciónala.
             </p>
             
-            
-            <!-- Formulario de selección de boletos -->
             <div class="ticket-selection">
                 <label for="localidades">Localidades</label>
-                <select id="localidades">
+                <select id="localidades" [(ngModel)]="localidadSeleccionada">
+                 
                     <option>PLATINUM - $85.00</option>
                     <option>VIP - $120.00</option>
-                    <option>GENERAL - $45.00</option>
+                    <option>GENERAL - ${{ concierto.precio_base }}</option>
                 </select>
-
+            
                 <label for="boletos">Número de boletos</label>
-                <select id="boletos">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                <select id="boletos" [(ngModel)]="cantidadBoletos">
+                   
+                    <option [value]="1">1</option>
+                    <option [value]="2">2</option>
+                    <option [value]="3">3</option>
+                    <option [value]="4">4</option>
+                    <option [value]="5">5</option>
                 </select>
-
-                
             </div>
-            <a routerLink="/compra" class="buy-button">
+            
+            
+
+
+
+            <a (click)="comprar()" class="buy-button">
                 <button>Comprar</button>
-            </a>
-            
-            
-            <!-- Imagen del mapa de asientos -->
-            <img src="assets/escenario.png" class="seating-map" alt="Seating map">
+              </a>
+<!-- Imagen del mapa de asientos -->
+<img [src]="getEscenarioPorId(concierto?.id_lugar)" class="seating-map" alt="Seating map">
+
         </section>
     </main>
 

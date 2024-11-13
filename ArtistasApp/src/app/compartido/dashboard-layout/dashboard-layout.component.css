@@ -1,0 +1,112 @@
+/* Contenedor principal */
+.dashboard-container {
+  padding: 0px 0px; /* Ajusta el padding general del navbar */
+  overflow-x: auto; /* Enable horizontal scrolling if needed */
+  white-space: nowrap; /* Prevent wrapping of content */
+
+}
+
+/* Sidebar Estático y Fijo */
+.sidebar {
+  width: 250px;                /* Ancho fijo para el sidebar */
+  background-color: #3f2a89;   /* Color de fondo */
+  color: white;                /* Color del texto */
+  padding: 20px;               /* Espacio interior */
+  display: flex;               /* Hacer uso de flexbox */
+  flex-direction: column;      /* Colocar los elementos en columna */
+  position: fixed;             /* Posicionar el sidebar de manera fija */
+  top: 0;                      /* Fijarlo al principio de la ventana */
+  left: 0;                     /* Fijarlo al lado izquierdo de la ventana */
+  height: 100%;                /* Abarcar todo el alto de la pantalla */
+  box-sizing: border-box;      /* Asegurar que el padding se incluya en el ancho total */
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Links de navegación */
+.nav-links {
+  list-style: none;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 30px 0; /*espacio entre botones*/
+}
+
+/* Links de navegación */
+.nav-links a {
+  color: #fff; /* Texto blanco */
+  text-decoration: none;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease; /* Suaviza el cambio de color */
+}
+
+.nav-links a .icon {
+color: #90752A; /* Color amarillo fijo para el icono */
+margin-right: 15px; /* Espacio entre el icono y el texto */
+font-size: 18px;
+display: inline-block;
+width: 24px; /* Tamaño consistente para todos los íconos */
+text-align: center; /* Asegura que los iconos estén centrados */
+}
+
+
+/* Cuando el enlace está seleccionado o en hover */
+.nav-links a:hover, .nav-links a.active {
+  color: #ffd700; /* Texto amarillo al seleccionar */
+}
+
+.nav-links a.active .icon, 
+.nav-links a:hover .icon {
+  color: #ffd700; /* El icono se mantiene amarillo */
+}
+
+
+/* Título de secciones */
+.section-title {
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 20px 0 10px;
+  color: #f2ebeb;
+}
+
+/* Contenido principal */
+/* Contenido principal con espacio para el sidebar */
+.main-content {
+  margin-left: 230px;          /* Espacio a la izquierda para que no se superponga con el sidebar */
+  padding: 20px;               /* Padding opcional para el contenido */
+}
+
+/* Header con el mensaje de bienvenida */
+header {
+  background-color: #3f2a89;
+  color: #fff;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 250px; /* Alinear con el sidebar */
+  right: 0;
+  height: 60px; /* Altura del header */
+}
+
+.welcome {
+  margin-right: 20px;
+}
+
+.content {
+  padding: 20px;
+  margin-top: 60px; /* Dejar espacio para el header */
+}

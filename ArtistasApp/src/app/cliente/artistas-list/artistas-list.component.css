@@ -1,0 +1,94 @@
+/* Contenedor de artistas */
+.artistas-container {
+  display: flex;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Se adapta automáticamente */
+  gap: 20px;
+  padding: 20px;
+
+  flex-wrap: wrap;  /* Las tarjetas se ajustan en varias filas */
+  justify-content: center; /* Centra las tarjetas en la fila si no se completan 4 */
+}
+
+
+
+/* Estilo del título */
+.artistas-container h1 {
+  width: 100%;
+  text-align: center; /* Título alineado a la izquierda */
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+
+/* Tarjeta de artista */
+.artista-card {
+  background-color: #424182;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px white;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+
+}
+
+.artista-card:hover {
+  transform: scale(1.05);
+}
+
+/* Imagen del artista */
+.artista-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Detalles del artista */
+.artista-details {
+  padding: 15px;
+}
+
+.artista-details h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #eee8e8
+}
+
+.artista-details p {
+  font-size: 1rem;
+  color: #eee8e8;
+  margin-bottom: 5px;
+}
+
+/* Botón de Comprar */
+.btn-comprar {
+  display: block;
+  background-color: #c2b4e6;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.btn-comprar:hover {
+  background-color: #8866df;
+}
+
+/* Estilo para mejorar la adaptación en móviles */
+@media (max-width: 768px) {
+  .artistas-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajusta mejor para pantallas pequeñas */
+  }
+
+  .artista-img {
+    height: 150px; /* Reduce el tamaño de la imagen en pantallas pequeñas */
+  }
+
+  .artista-details h2 {
+    font-size: 1.2rem; /* Reduce el tamaño del texto para móviles */
+  }
+
+  .artista-details p {
+    font-size: 0.9rem;
+  }
+}

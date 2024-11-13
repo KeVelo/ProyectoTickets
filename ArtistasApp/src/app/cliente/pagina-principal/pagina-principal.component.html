@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concerts Carousel</title>
+    <link rel="stylesheet" href="pagina-principal.component.css">
+</head>
+<body>
+<app-header></app-header>
+
+<!-- Sección del carrusel -->
+<section class="carousel-section">
+  <div class="carousel">
+    <div class="carousel-image">
+      <img *ngFor="let image of carouselImages; let i = index" [src]="image.src" [alt]="image.alt" [class.active]="i === currentSlide">
+      <button class="buy-tickets-btn" routerLink="/artistas">Comprar boletos</button>
+    </div>
+    <div class="carousel-dots">
+      <span *ngFor="let image of carouselImages; let i = index" class="dot" [class.active]="i === currentSlide" (click)="showSlide(i)"></span>
+    </div>
+  </div>
+</section>
+
+<!-- Sección de conciertos -->
+<section class="concerts-section">
+  <div class="divider">
+    <h2>Nuestros Conciertos</h2>
+  </div>
+  <div class="concert-cards-wrapper">
+    <button class="arrow left" (click)="scrollLeft()">
+      <i class="bi bi-chevron-left fs-1"></i>
+    </button>
+    <div class="concert-cards-container">
+      <div class="concert-cards">
+        <div class="concert-card" *ngFor="let concert of visibleConcerts">
+          <img [src]="getImagenPorId(concert.id_concierto)" [alt]="concert.nombre_concierto">
+          <button (click)="comprar(concert.id_concierto)" class="buy-btn">Comprar</button>
+        </div>
+      </div>
+    </div>
+    <button class="arrow right" (click)="scrollRight()">
+      <i class="bi bi-chevron-right fs-1"></i>
+    </button>
+  </div>
+</section>
+
+<app-footer></app-footer>
+
+<router-outlet></router-outlet>
+
+</body>
+</html>

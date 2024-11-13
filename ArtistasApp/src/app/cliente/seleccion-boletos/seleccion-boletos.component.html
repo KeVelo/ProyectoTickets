@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concerts Carousel</title>
+    <link rel="stylesheet" href="seleccion-boletos.component.css">
+</head>
+<body>
+    <!-- Llamada al componente Header -->
+    <app-header></app-header>
+    <img [src]="getImagenTopPorId(concierto?.id_concierto)" class="top-image" alt="Top Image">
+    
+    <!-- Sección principal que contiene las dos secciones -->
+    <main class="main-container" *ngIf="concierto">
+        <!-- Sección para los detalles del evento -->
+        <section class="event-section">
+            <img [src]="getImagenPorId(concierto?.id_concierto)" class="event-image" alt="Concierto">
+            <div class="event-details">
+                <h2>Detalles del evento</h2>
+                <div class="divider"></div>
+                <h4>{{ concierto.nombre_concierto }}</h4>
+                <div class="details">
+                    <p><strong>Lugar ID:</strong> {{ concierto.id_lugar }}</p> <!-- Muestra el ID del lugar -->
+                    <p><strong>Fecha:</strong> {{ concierto.fecha_concierto | date }}</p>
+                    <p><strong>Precio base:</strong> ${{ concierto.precio_base }}</p>
+                   
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección para la selección de boletos -->
+        <section class="tickets-section">
+            <h2>Selecciona tus boletos</h2>
+            <p class="instructions">
+                Estimado usuario, solamente puedes realizar una compra de máximo 5 boletos. 
+            </p>
+            <p class="instructions">
+                Verifica en el mapa la localidad de tu preferencia y selecciónala.
+            </p>
+            
+            <div class="ticket-selection">
+                <label for="localidades">Localidades</label>
+                <select id="localidades" [(ngModel)]="localidadSeleccionada">
+                 
+                    <option>PLATINUM - $85.00</option>
+                    <option>VIP - $120.00</option>
+                    <option>GENERAL - ${{ concierto.precio_base }}</option>
+                </select>
+            
+                <label for="boletos">Número de boletos</label>
+                <select id="boletos" [(ngModel)]="cantidadBoletos">
+                   
+                    <option [value]="1">1</option>
+                    <option [value]="2">2</option>
+                    <option [value]="3">3</option>
+                    <option [value]="4">4</option>
+                    <option [value]="5">5</option>
+                </select>
+            </div>
+            
+            
+
+
+
+            <a (click)="comprar()" class="buy-button">
+                <button>Comprar</button>
+              </a>
+<!-- Imagen del mapa de asientos -->
+<img [src]="getEscenarioPorId(concierto?.id_lugar)" class="seating-map" alt="Seating map">
+
+        </section>
+    </main>
+
+    <!-- Llamada al componente Footer -->
+    <app-footer></app-footer>
+
+    <!-- Angular Router Outlet -->
+    <router-outlet></router-outlet>
+</body>
+</html>

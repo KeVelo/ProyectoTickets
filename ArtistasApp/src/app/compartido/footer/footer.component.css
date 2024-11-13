@@ -1,0 +1,63 @@
+
+
+.footer {
+    padding: 10px 7.2px;
+    background-color: #424182;
+    color: white;
+    text-align: center;
+    width: 100%;
+    margin-top: auto; 
+    white-space: nowrap; 
+  }
+
+.footer-link {
+    text-decoration: none;
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    font-weight: lighter;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-link i {
+    color: #90752A;
+}
+main {
+    flex-grow: 1;
+    overflow-y: auto; /* Ensure scrolling happens only here */
+  }
+
+@media (max-width: 991px) {
+    .footer {
+        padding: 0; /* Elimina el padding en pantallas pequeñas */
+        display: flex;
+        justify-content: space-between; /* Distribuye los íconos uniformemente */
+        align-items: center; /* Centra los íconos verticalmente */
+        flex-direction: row; /* Alinea los íconos horizontalmente */
+    }
+
+    .footer ul {
+        display: flex; /* Asegúrate de que la lista de elementos sea flexbox */
+        justify-content: space-around; /* Distribuye los elementos */
+        width: 100%; /* Asegura que los elementos ocupen todo el ancho */
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer .nav-item {
+        margin: 0 10px; /* Margen horizontal entre los íconos */
+        list-style: none;
+    }
+
+    .footer .nav-link {
+        display: flex; /* Asegúrate de que el ícono y el texto estén en la misma fila */
+        align-items: center;
+        color: white; /* Asegúrate de que el texto sea visible */
+    }
+
+    .footer .nav-link i {
+        margin-right: 5px; /* Añade un pequeño margen entre el ícono y el texto */
+        color: #90752A; /* Color del ícono */
+    }
+}

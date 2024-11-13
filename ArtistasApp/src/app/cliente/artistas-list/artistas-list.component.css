@@ -58,6 +58,22 @@
   margin-bottom: 5px;
 }
 
+/* Botón de Comprar */
+.btn-comprar {
+  display: block;
+  background-color: #c2b4e6;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.btn-comprar:hover {
+  background-color: #8866df;
+}
+
 /* Estilo para mejorar la adaptación en móviles */
 @media (max-width: 768px) {
   .artistas-container {

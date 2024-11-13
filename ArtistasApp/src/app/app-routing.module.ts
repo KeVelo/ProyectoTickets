@@ -10,6 +10,8 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { TotalBoletosComponent } from './admin/total-boletos/total-boletos.component';
 import { DetalleBoletosComponent } from './admin/detalle-boletos/detalle-boletos.component';
 import { DetalleListaComponent } from './admin/detalle-lista/detalle-lista.component';
+import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
+import { RegistroAdminComponent } from './admin/registro-admin/registro-admin.component';
 
 
 const routes: Routes = [
@@ -17,10 +19,12 @@ const routes: Routes = [
   
   { path: 'inicio-sesion', component: InicioSesionComponent }, // Ruta para el componente de inicio de sesión
   { path: 'registro', component: RegistroComponent }, // Ruta para el componente de registro
-  { path: 'seleccion', component: SeleccionBoletosComponent }, // Ruta para el componente de seleccion
+  { path: 'seleccion/:id', component: SeleccionBoletosComponent }, // Ruta para el componente de seleccion
   { path: 'compra', component: ProcesoCompraComponent }, // Ruta para el componente de proceso compra
 
   { path: 'dashboard', component: DashboardComponent }, // Ruta para el componente de artistas
+  { path: 'admin', component: LoginAdminComponent }, // Ruta para el componente de artistas
+  { path: 'registro/admin', component: RegistroAdminComponent }, // Ruta para el componente de artistas
   { path: 'vendido', component: TotalBoletosComponent }, // Ruta para el componente de artistas
   { path: 'totalboletos', component: DetalleBoletosComponent }, // Ruta para el componente de artistas
   { path: 'lista', component: DetalleListaComponent }, // Ruta para el componente de artistas

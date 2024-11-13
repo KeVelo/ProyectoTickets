@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+/* Ajusta los estilos generales y el fondo */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Asegura que ocupe el 100% de la altura de la ventana */
+    background-image: url('/assets/inicio-sesion.png'); /* Cambia la ruta según tu imagen */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0; /* Asegura que no haya margen que pueda afectar la alineación */
+}
+
+/* Ajusta el contenedor del formulario */
+.form-container {
+    background-color: white;
+    width: 140%;
+    max-width: 369px;
+    height: 442.78px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    text-align: center;
+    margin: 0 auto; /* Asegura que el contenedor esté centrado horizontalmente */
+}
+
+
+.form-container img {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.form-container h2 {
+    color: #90752A;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.form-container h3 {
+    color: #333333;
+    font-size: 14px;
+    margin-bottom: 0px;
+    text-align: left;
+}
+
+
+.form-container .form-group {
+    margin-bottom: 15px;
+}
+
+.form-container .form-control {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+    height: 44px;
+}
+
+.form-container .btn-primary {
+    font-size: 14px;
+    border-radius: 5px;
+    width: 308px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 36px;
+    font-weight: bold;
+    background-color: #424182; /* Color de fondo */
+    border: 1px solid #424182; /* Color del borde */
+    color: white; /* Color del texto */
+    transition: none; /* Elimina cualquier transición de color */
+}
+
+.form-container .btn-primary:hover {
+    background-color: #424182; /* Mantén el mismo color de fondo */
+    color: white; /* Mantén el mismo color del texto */
+    border-color: #424182; /* Mantén el mismo color del borde */
+}
+
+.form-container .btn-primary:active {
+    background-color: #424182; /* Mantén el mismo color de fondo */
+    color: white; /* Mantén el mismo color del texto */
+    border-color: #424182; /* Mantén el mismo color del borde */
+}
+
+.form-container .btn-primary:focus {
+    outline: none; /* Quita el borde de enfoque */
+    box-shadow: none; /* Elimina cualquier sombra de enfoque */
+}
+
+
+.form-container .btn-outline-primary {
+    font-size: 14px;
+    border-radius: 5px;
+    width: 308px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 36px;
+    border: 1px solid #424182; /* Color del borde */
+    color: #424182; /* Color del texto */
+    background-color: transparent; /* Fondo transparente */
+    transition: none; /* Elimina cualquier transición de color */
+}
+
+.form-container .btn-outline-primary:hover {
+    background-color: transparent; /* Mantén el fondo transparente */
+    color: #424182; /* Mantén el color del texto igual que el estado normal */
+    border-color: #424182; /* Mantén el color del borde igual que el estado normal */
+}
+
+.form-container .btn-outline-primary:active {
+    background-color: transparent; /* Mantén el fondo transparente */
+    color: #424182; /* Mantén el color del texto igual que el estado normal */
+    border-color: #424182; /* Mantén el color del borde igual que el estado normal */
+}
+
+.form-container .btn-outline-primary:focus {
+    outline: none; /* Quita el borde de enfoque */
+    box-shadow: none; /* Elimina cualquier sombra de enfoque */
+}
+
+
+
+
+.form-container .options {
+    display: flex;
+    justify-content: left;
+    
+    margin-top: 20px;
+}
+
+
+
+.form-container .options a {
+    color: #424182;
+    text-decoration: underline;
+    font-size: 14px;
+    margin-bottom: 10px;
+    
+}
+
+.form-container .options span {
+    color: #ccc;
+    margin: 0 10px;
+}

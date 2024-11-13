@@ -1,0 +1,28 @@
+.suggestions-box {
+    position: absolute; /* Cambia a absolute para que se posicione en relación con el input */
+    top: 90px; /* Ajusta esto para que quede más abajo del input */
+    left: 300px; /* Mantiene la posición horizontal alineada con el input */
+    width: 349.11px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    z-index: 10000; /* Asegúrate de que el z-index sea suficientemente alto */
+    max-height: 150px; /* Limitar la altura */
+    overflow-y: auto; /* Hacer scroll si hay muchas sugerencias */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Agrega sombra para visibilidad */
+}
+
+.suggestions-box ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.suggestions-box li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.suggestions-box li:hover {
+    background-color: #f0f0f0;
+}

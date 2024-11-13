@@ -3,25 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
     <link rel="stylesheet" href="proceso-compra.component.css">
 </head>
 <body>
     <!-- Llamada al componente Header -->
     <app-header></app-header>
-    <img src="assets/coldplay-seleccion2.png" class="top-image" alt="Top Image">
+    <img [src]="getImagenTopPorId(concierto?.id_concierto)" class="top-image" alt="Top Image">
     <div class="divider">
         <h2>Tu compra</h2>
-      </div>
+    </div>
 
     <div class="compra-container">
         <div class="compra-info">
-            <img src="assets/coldplay-seleccion.png" class="ticket-image" alt="Ticket Image">
+            <img [src]="getImagenPorId(concierto?.id_concierto)" class="ticket-image" alt="Ticket Image">
             <div class="ticket-info">
-                <p>Teatro Presidente</p>
-                <p>Sábado 21 de septiembre</p>
-                <p>8:00 PM</p>
+                <p>{{ concierto.nombre_concierto }}</p>
+                <p>{{ concierto.fecha_concierto | date }}</p>
+                <p>{{ concierto.id_lugar }}</p>
             </div>
         </div>
 
@@ -39,40 +37,37 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Platinum</td>
-                            <td>2</td>
-                            <td>$95.00</td>
-                            <td>$190.00</td>
+                            <td>{{ localidadSeleccionada }}</td>
+                            <td>{{ cantidadBoletos }}</td>
+                            <td>${{ precioBase.toFixed(2) }}</td>
+                            <td>${{ (precioBase * cantidadBoletos).toFixed(2) }}</td>
                         </tr>
                         <tr>
                             <td colspan="3" class="text-right">Total</td>
-                            <td>$190.00</td>
+                            <td>${{ (precioBase * cantidadBoletos).toFixed(2) }}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-
-           
-            
         </div>
+
         <div class="botones">
-            <button class="editar-compra">
+            <button class="editar-compra" (click)="editarCompra()">
                 <i class="fas fa-edit"></i> Editar Compra
             </button>
-            <button class="cancelar-compra">
+            <button class="cancelar-compra" (click)="cancelarCompra()">
                 <i class="fas fa-times"></i> Cancelar Compra
             </button>
         </div>
     </div>
 
-   
     <div class="formas-pago">
         <h3>Formas de pago</h3>
         <img class="pago-tarjeta" src="assets/tarjeta.png" alt="Tarjeta Crédito/Débito">
     </div>
     
     <div class="pago-detalle">
-        <p>Tu Pago (Monto a cobrar: $ 190.00)</p>
+        <p>Tu Pago (Monto a cobrar: ${{ (precioBase * cantidadBoletos).toFixed(2) }})</p>
         <input type="text" placeholder="Nombre del titular en tarjeta">
         <input type="text" placeholder="Número de tarjeta">
         <div class="detalles-tarjeta">
@@ -83,7 +78,6 @@
         </div>
         <button class="procesar-pago">Procesar pago con tarjeta</button>
     </div>
-    
 
     <!-- Llamada al componente Footer -->
     <app-footer></app-footer>

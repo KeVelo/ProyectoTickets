@@ -5,6 +5,8 @@ body {
   padding: 0;
   background-color: #eaeaea;
   overflow-x: hidden;
+  position: relative; /* Asegúrate de que los elementos tengan la posición correcta */
+    z-index: 1; /* Valor menor que el del header y las sugerencias */
   
 }
 
@@ -12,6 +14,7 @@ body {
 .carousel-section {
   position: relative;
   width: 100%;
+  z-index: 1;
 }
 
 .carousel {
@@ -21,9 +24,10 @@ body {
 
 .carousel-image img {
   width: 100%;
-  height: 611px; /* Ocupa todo el contenedor de alto */
+  height: 750px; /* Ocupa todo el contenedor de alto */
   object-fit: cover; /* Ajusta la imagen para cubrir el área sin deformar */
   display: none;
+  z-index: 1;
 }
 
 .carousel-image img.active {
@@ -89,6 +93,7 @@ body {
   background-color: #c2b4e6;
   padding: 0;
   text-align: center;
+  z-index: 1;
 }
 
 .concert-cards-wrapper {
@@ -168,3 +173,4 @@ body {
     padding: 8px 16px;
   }
 }
+

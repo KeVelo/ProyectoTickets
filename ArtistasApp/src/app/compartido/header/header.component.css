@@ -1,5 +1,4 @@
-/* Cambiar el color del placeholder a blanco */
-body{
+body {
     overflow-x: hidden;
 }
 input::placeholder {
@@ -41,7 +40,7 @@ input::placeholder {
     font-family: 'Arial', sans-serif;
     width: 349.11px;
     height: 40px;
-    padding-right: 10px; /* Ajusta el padding a la derecha del input de búsqueda */ /* Ajusta el padding a la izquierda del input para dejar espacio al icono */
+    padding-right: 10px; /* Ajusta el padding a la derecha del input de búsqueda */
     background-color: #2f2e5a; /* Fondo del input */
     color: white; /* Color del texto del input */
     border: none; /* Elimina el borde del input */
@@ -66,14 +65,14 @@ input::placeholder {
     padding-left: 90px; 
     padding-right: 20px;
 }
+
 main {
     flex-grow: 1;
     overflow-y: scroll; /* Forza el scroll en main */
-    
-  }
+}
 
 /* Estilos para pantallas más pequeñas */
-@media (max-width: 991px) { /* Ajusta el punto de ruptura según sea necesario */
+@media (max-width: 991px) {
     .input-group {
         padding-left: 0; /* Elimina el padding en pantallas más pequeñas */
         padding-top: 10px;
@@ -88,7 +87,4 @@ main {
         padding-right: 0;
     }
 }
-
-
-
 

@@ -27,7 +27,7 @@ body {
     background-color: white;
     width: 140%;
     max-width: 369px;
-    height: 442.78px;
+    height: 470.78px;
     padding: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
@@ -96,6 +96,36 @@ body {
     box-shadow: none; /* Elimina cualquier sombra de enfoque */
 }
 
+
+.form-container .btn-outline-primary {
+    font-size: 14px;
+    border-radius: 5px;
+    width: 308px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 36px;
+    border: 1px solid #424182; /* Color del borde */
+    color: #424182; /* Color del texto */
+    background-color: transparent; /* Fondo transparente */
+    transition: none; /* Elimina cualquier transición de color */
+}
+
+.form-container .btn-outline-primary:hover {
+    background-color: transparent; /* Mantén el fondo transparente */
+    color: #424182; /* Mantén el color del texto igual que el estado normal */
+    border-color: #424182; /* Mantén el color del borde igual que el estado normal */
+}
+
+.form-container .btn-outline-primary:active {
+    background-color: transparent; /* Mantén el fondo transparente */
+    color: #424182; /* Mantén el color del texto igual que el estado normal */
+    border-color: #424182; /* Mantén el color del borde igual que el estado normal */
+}
+
+.form-container .btn-outline-primary:focus {
+    outline: none; /* Quita el borde de enfoque */
+    box-shadow: none; /* Elimina cualquier sombra de enfoque */
+}
 
 
 

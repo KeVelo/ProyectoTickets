@@ -42,22 +42,21 @@
             <div class="ticket-selection">
                 <label for="localidades">Localidades</label>
                 <select id="localidades" [(ngModel)]="localidadSeleccionada">
-                 
-                    <option>PLATINUM - $85.00</option>
-                    <option>VIP - $120.00</option>
-                    <option>GENERAL - ${{ concierto.precio_base }}</option>
+                  <option *ngFor="let localidad of localidades" [value]="localidad.nombre">
+                    {{ localidad.nombre }} - ${{ localidad.precio.toFixed(2) }}
+                  </option>
                 </select>
-            
+              
                 <label for="boletos">Número de boletos</label>
                 <select id="boletos" [(ngModel)]="cantidadBoletos">
-                   
-                    <option [value]="1">1</option>
-                    <option [value]="2">2</option>
-                    <option [value]="3">3</option>
-                    <option [value]="4">4</option>
-                    <option [value]="5">5</option>
+                  <option [value]="1">1</option>
+                  <option [value]="2">2</option>
+                  <option [value]="3">3</option>
+                  <option [value]="4">4</option>
+                  <option [value]="5">5</option>
                 </select>
-            </div>
+              </div>
+              
             
             
 

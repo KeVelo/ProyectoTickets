@@ -20,7 +20,15 @@ export class InicioSesionComponent {
         console.log('Login exitoso:', response);
         alert('Inicio de sesión exitoso');
         this.authService.setToken(response.access_token);
-        this.router.navigate(['/home']); // Redirige a la página principal después del login
+
+        // Verificar si hay una URL de redirección almacenada
+        const redirectUrl = localStorage.getItem('redirectUrl');
+        if (redirectUrl) {
+          this.router.navigateByUrl(redirectUrl);
+          localStorage.removeItem('redirectUrl'); // Limpiar la URL de redirección después de usarla
+        } else {
+          this.router.navigate(['/home']); // Redirige a la página principal si no hay URL almacenada
+        }
       },
       error => {
         console.error('Error de autenticación:', error.message);

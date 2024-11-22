@@ -19,14 +19,14 @@ export class RegistroAdminComponent {
       nombre: this.nombre,
       email: this.email,
       password: this.password,
-      id_rol: 2 // Asegura que el rol es 2 para administradores
+      id_rol: 2
     });
 
-    this.authService.register(this.nombre, this.email, this.password, 2).subscribe(
+    this.authService.register(this.nombre, this.email, this.password, ).subscribe(
       response => {
         console.log('Registro de administrador exitoso:', response);
         alert('Administrador registrado con éxito');
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/admin']); // Redirige al login de administrador
       },
       error => {
         console.error('Error de registro de administrador:', error.message);

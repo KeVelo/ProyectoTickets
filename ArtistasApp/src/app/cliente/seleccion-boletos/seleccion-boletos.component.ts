@@ -9,6 +9,7 @@ import { ArtistasService } from 'src/app/services/artistas.service';
 })
 export class SeleccionBoletosComponent implements OnInit {
   concierto: any; // Almacena la información del concierto seleccionado
+  localidades: any[] = []; // Lista de localidades
   localidadSeleccionada: string = '';
   cantidadBoletos: number | null = null;
 
@@ -37,7 +38,9 @@ export class SeleccionBoletosComponent implements OnInit {
         (data) => {
           this.concierto = data;
   
-          // Si hay estado de navegación, usa esos datos
+          // Llama al método para cargar las localidades después de obtener el concierto
+          this.cargarLocalidades(Number(idConcierto));
+  
           const navigation = this.router.getCurrentNavigation();
           const state = navigation?.extras.state as {
             localidadSeleccionada: string;
@@ -55,6 +58,30 @@ export class SeleccionBoletosComponent implements OnInit {
       );
     }
   }
+  
+  cargarLocalidades(idConcierto: number): void {
+    this.artistasService.getLocalidades().subscribe(
+      (localidades) => {
+        console.log('Localidades completas:', localidades); // Verificar las localidades recibidas
+        const localidadesFiltradas = localidades.filter(
+          (localidad: any) => localidad.id_concierto === idConcierto
+        );
+  
+        // Transformar las localidades al formato esperado
+        this.localidades = [
+          { nombre: 'PLATINUM', precio: localidadesFiltradas[0]?.platinum_precio || 0 },
+          { nombre: 'VIP', precio: localidadesFiltradas[0]?.vip_precio || 0 },
+          { nombre: 'GENERAL', precio: localidadesFiltradas[0]?.general_precio || 0 },
+        ];
+  
+        console.log('Localidades filtradas y transformadas:', this.localidades);
+      },
+      (error) => {
+        console.error('Error al obtener las localidades:', error);
+      }
+    );
+  }
+  
   
 
   getImagenTopPorId(idConcierto: number): string | null {
@@ -120,18 +147,29 @@ export class SeleccionBoletosComponent implements OnInit {
     }
 }
 
-  comprar(): void {
-    if (this.localidadSeleccionada && this.cantidadBoletos != null && this.cantidadBoletos > 0) {
+comprar(): void {
+  if (this.localidadSeleccionada && this.cantidadBoletos != null && this.cantidadBoletos > 0) {
+    // Buscar el precio de la localidad seleccionada
+    const localidadSeleccionada = this.localidades.find(
+      (localidad) => localidad.nombre === this.localidadSeleccionada
+    );
+
+    if (localidadSeleccionada) {
       this.router.navigate(['/compra'], {
         state: {
           concierto: this.concierto,
-          localidadSeleccionada: this.localidadSeleccionada,
-          cantidadBoletos: this.cantidadBoletos
-        }
+          localidadSeleccionada: localidadSeleccionada.nombre,
+          precioLocalidad: localidadSeleccionada.precio,
+          cantidadBoletos: this.cantidadBoletos,
+        },
       });
     } else {
-      console.warn('Por favor, selecciona una localidad y una cantidad de boletos antes de continuar.');
-      alert('Por favor, selecciona una localidad y una cantidad de boletos antes de continuar.');
+      alert('Por favor, selecciona una localidad válida.');
     }
+  } else {
+    console.warn('Por favor, selecciona una localidad y una cantidad de boletos antes de continuar.');
+    alert('Por favor, selecciona una localidad y una cantidad de boletos antes de continuar.');
   }
+}
+
 }

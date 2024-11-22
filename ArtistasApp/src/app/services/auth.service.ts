@@ -9,23 +9,21 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  
   private baseUrl = 'http://api.159.223.175.204.nip.io/api';
 
   constructor(private http: HttpClient, private router: Router) {}
-  
 
-  register(nombre: string, email: string, password: string): Observable<any> {
+  register(nombre: string, email: string, password: string, idRol: number): Observable<any> {
     const url = `${this.baseUrl}/usuarios`;
     const body = {
       nombre,
       email,
       password,
-      id_rol: 1
+      id_rol: idRol
     };
-  
+
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  
+
     return this.http.post<any>(url, body, { headers }).pipe(
       tap(response => {
         localStorage.setItem('userName', nombre);
@@ -46,16 +44,16 @@ export class AuthService {
       .set('grant_type', 'password')
       .set('username', username)
       .set('password', password);
-  
+
     const headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'
     });
-  
+
     return this.http.post<LoginResponse>(url, body.toString(), { headers }).pipe(
       tap(response => {
         if (response) {
           localStorage.setItem('jwtToken', response.access_token);
-          localStorage.setItem('userEmail', username); // Guarda el email al iniciar sesión
+          localStorage.setItem('userEmail', username);
         }
       }),
       catchError(error => {
@@ -71,17 +69,13 @@ export class AuthService {
   setToken(token: string): void {
     localStorage.setItem('jwtToken', token);
   }
+
   logout(): void {
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('userName');
     localStorage.removeItem('userEmail');
-    // Redirige al usuario a la página de inicio de sesión
     this.router.navigate(['/']).then(() => {
       window.location.reload();
     });
   }
 }
-
-  
-
-

@@ -17,17 +17,18 @@ export class ProcesoCompraComponent implements OnInit {
     const state = navigation?.extras.state as {
       concierto: any;
       localidadSeleccionada: string;
+      precioLocalidad: number; // Añadimos el precio de la localidad
       cantidadBoletos: number;
     };
-
+  
     if (state) {
       this.concierto = state.concierto;
       this.localidadSeleccionada = state.localidadSeleccionada;
       this.cantidadBoletos = state.cantidadBoletos;
-      this.precioBase = state.concierto.precio_base;
+      this.precioBase = state.precioLocalidad; // Usamos el precio de la localidad seleccionada
     }
   }
-
+  
   ngOnInit(): void {}
 
   editarCompra(): void {

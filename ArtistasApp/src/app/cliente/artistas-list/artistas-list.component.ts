@@ -23,18 +23,17 @@ export class ArtistasListComponent implements OnInit {
     );
   }
 
-  // Método para manejar la compra y verificar autenticación
-  comprar(idConcierto: number): void {
-    if (localStorage.getItem('jwtToken')) {
-      // Si hay token, redirige a la página de selección de boletos
-      this.router.navigate(['/seleccion', idConcierto]);
-    } else {
-      // Si no hay token, redirige a inicio de sesión y muestra un mensaje
-      alert('Debes iniciar sesión para poder comprar boletos.');
-      this.router.navigate(['/inicio-sesion']);
-    }
+  // Método en el componente donde el usuario intenta comprar boletos
+comprar(idConcierto: number): void {
+  if (localStorage.getItem('jwtToken')) {
+    this.router.navigate(['/seleccion', idConcierto]);
+  } else {
+    // Guardar la URL actual para redirigir después de iniciar sesión
+    localStorage.setItem('redirectUrl', `/seleccion/${idConcierto}`);
+    alert('Debes iniciar sesión para poder comprar boletos.');
+    this.router.navigate(['/inicio-sesion']);
   }
-
+}
   getImagenPorId(idConcierto: number): string {
     switch (idConcierto) {
       case 1:

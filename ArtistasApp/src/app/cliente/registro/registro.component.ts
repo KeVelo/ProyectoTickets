@@ -19,10 +19,10 @@ export class RegistroComponent {
       nombre: this.nombre,
       email: this.email,
       password: this.password,
-      id_rol: 1 // Asegúrate de incluir este campo en la consola para verificar
+      id_rol: 1 // Especificando el rol del cliente
     });
 
-    this.authService.register(this.nombre, this.email, this.password).subscribe(
+    this.authService.register(this.nombre, this.email, this.password, 1).subscribe(
       response => {
         console.log('Registro exitoso:', response);
         alert('Usuario registrado con éxito');

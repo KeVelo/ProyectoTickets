@@ -8,6 +8,7 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class ArtistasService {
   private apiUrl = 'http://api.159.223.175.204.nip.io/api/conciertos'; // URL del endpoint de conciertos
+  private localidadesUrl = 'http://api.159.223.175.204.nip.io/api/localidades'; // URL del endpoint de localidades
 
   constructor(private http: HttpClient) { }
 
@@ -52,4 +53,16 @@ export class ArtistasService {
       })
     );
   }
+
+  // Método para obtener las localidades de un concierto por ID de concierto
+  getLocalidades(): Observable<any[]> {
+    const headers = this.getAuthHeaders();
+    return this.http.get<any[]>(this.localidadesUrl, { headers }).pipe(
+      catchError(error => {
+        console.error('Error al obtener las localidades:', error);
+        return throwError(() => new Error('Error al obtener las localidades.'));
+      })
+    );
+  }
+  
 }

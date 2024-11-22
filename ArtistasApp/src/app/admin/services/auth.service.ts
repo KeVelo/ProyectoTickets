@@ -15,17 +15,18 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
   
   // Método de registro para administradores con rol 2
-  register(nombre: string, email: string, password: string, id_rol: number): Observable<any> {
+ 
+  register(nombre: string, email: string, password: string): Observable<any> {
     const url = `${this.baseUrl}/usuarios`;
     const body = {
       nombre,
       email,
       password,
-      id_rol
+      id_rol: 2 // Asegúrate de que se envíe el id_rol 2 para administradores
     };
-  
+
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  
+
     return this.http.post<any>(url, body, { headers }).pipe(
       tap(response => {
         localStorage.setItem('userName', nombre);
@@ -39,6 +40,7 @@ export class AuthService {
       })
     );
   }
+
   
 
   // Método de login que verifica el rol de administrador (rol 2)
@@ -55,11 +57,11 @@ export class AuthService {
   
     return this.http.post<LoginResponse>(url, body.toString(), { headers }).pipe(
       tap(response => {
-        if (response && response.user.id_rol === 2) { // Verifica si el usuario es administrador
+        console.log('Respuesta completa del servidor:', response); // Verifica la respuesta
+        if (response && response.user.id_rol === 2) {
           localStorage.setItem('jwtToken', response.access_token);
-          localStorage.setItem('userEmail', username); // Guarda el email al iniciar sesión
+          localStorage.setItem('userEmail', username);
         } else {
-          // Si el rol no es 2, se lanza un error
           throw new Error('No tienes permisos de administrador.');
         }
       }),
@@ -72,6 +74,7 @@ export class AuthService {
       })
     );
   }
+  
 
   setToken(token: string): void {
     localStorage.setItem('jwtToken', token);

@@ -38,6 +38,7 @@ import { MatInputModule } from '@angular/material/input';
 import { RegistroAdminComponent } from './admin/registro-admin/registro-admin.component';
 import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
 import { SuggestionsComponent } from './cliente/suggestions/suggestions.component';
+import { ModalComponent } from './compartido/modal/modal.component';
 
 @NgModule({
 
@@ -62,7 +63,8 @@ import { SuggestionsComponent } from './cliente/suggestions/suggestions.componen
     DashboardLayoutComponent,
     RegistroAdminComponent,
     LoginAdminComponent,
-    SuggestionsComponent
+    SuggestionsComponent,
+    ModalComponent
 
 
     

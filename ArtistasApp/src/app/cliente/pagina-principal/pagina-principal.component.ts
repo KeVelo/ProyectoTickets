@@ -20,6 +20,11 @@ export class PaginaPrincipalComponent implements OnInit, OnDestroy {
   currentConcertIndex = 0;
   visibleConcerts: any[] = [];
 
+  // Variables para el modal
+  showModal: boolean = false;
+  modalTitle: string = '';
+  modalMessage: string = '';
+
   constructor(private artistasService: ArtistasService, private router: Router) {}
 
   ngOnInit(): void {
@@ -46,7 +51,6 @@ export class PaginaPrincipalComponent implements OnInit, OnDestroy {
   obtenerConciertos(): void {
     this.artistasService.getConciertos().subscribe(
       data => {
-        // Filtrar conciertos que tienen una imagen asociada distinta al valor por defecto
         this.conciertos = data.filter(concert => this.getImagenPorId(concert.id_concierto) !== null);
         this.showConcerts();
       },
@@ -63,7 +67,7 @@ export class PaginaPrincipalComponent implements OnInit, OnDestroy {
   scrollLeft(): void {
     this.currentConcertIndex -= 4;
     if (this.currentConcertIndex < 0) {
-      this.currentConcertIndex = Math.max(0, this.conciertos.length - 4); // Asegurarse de no tener índices negativos
+      this.currentConcertIndex = Math.max(0, this.conciertos.length - 4);
     }
     this.showConcerts();
   }
@@ -71,7 +75,7 @@ export class PaginaPrincipalComponent implements OnInit, OnDestroy {
   scrollRight(): void {
     this.currentConcertIndex += 4;
     if (this.currentConcertIndex >= this.conciertos.length) {
-      this.currentConcertIndex = 0; // Reiniciar al inicio si llega al final
+      this.currentConcertIndex = 0;
     }
     this.showConcerts();
   }
@@ -97,17 +101,23 @@ export class PaginaPrincipalComponent implements OnInit, OnDestroy {
       case 14:
         return 'assets/concierto-carrusel/1975.jpg';
       default:
-        return null; // Retornar null si no hay una imagen asociada
+        return null;
     }
   }
-  
 
   comprar(idConcierto: number): void {
     if (localStorage.getItem('jwtToken')) {
       this.router.navigate(['/seleccion', idConcierto]);
     } else {
-      alert('Debes iniciar sesión para poder comprar boletos.');
-      this.router.navigate(['/inicio-sesion']);
+      // Mostrar modal en lugar de alert
+      this.showModal = true;
+      this.modalTitle = 'Inicia Sesión';
+      this.modalMessage = 'Debes iniciar sesión para poder comprar boletos.';
     }
+  }
+
+  closeModal(): void {
+    this.showModal = false;
+    this.router.navigate(['/inicio-sesion']); // Redirigir al inicio de sesión al cerrar el modal
   }
 }

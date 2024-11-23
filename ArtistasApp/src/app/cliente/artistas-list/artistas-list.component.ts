@@ -9,6 +9,11 @@ import { Router } from '@angular/router';
 })
 export class ArtistasListComponent implements OnInit {
   conciertos: any[] = [];
+  
+  // Variables para el modal
+  showModal: boolean = false;
+  modalTitle: string = '';
+  modalMessage: string = '';
 
   constructor(private artistasService: ArtistasService, private router: Router) {}
 
@@ -23,17 +28,25 @@ export class ArtistasListComponent implements OnInit {
     );
   }
 
-  // Método en el componente donde el usuario intenta comprar boletos
-comprar(idConcierto: number): void {
-  if (localStorage.getItem('jwtToken')) {
-    this.router.navigate(['/seleccion', idConcierto]);
-  } else {
-    // Guardar la URL actual para redirigir después de iniciar sesión
-    localStorage.setItem('redirectUrl', `/seleccion/${idConcierto}`);
-    alert('Debes iniciar sesión para poder comprar boletos.');
-    this.router.navigate(['/inicio-sesion']);
+  comprar(idConcierto: number): void {
+    if (localStorage.getItem('jwtToken')) {
+      this.router.navigate(['/seleccion', idConcierto]);
+    } else {
+      // Guardar la URL actual para redirigir después de iniciar sesión
+      localStorage.setItem('redirectUrl', `/seleccion/${idConcierto}`);
+      
+      // Mostrar modal en lugar de alert
+      this.showModal = true;
+      this.modalTitle = 'Inicia Sesión';
+      this.modalMessage = 'Debes iniciar sesión para poder comprar boletos.';
+    }
   }
-}
+
+  closeModal(): void {
+    this.showModal = false;
+    this.router.navigate(['/inicio-sesion']); // Redirigir al inicio de sesión al cerrar el modal
+  }
+
   getImagenPorId(idConcierto: number): string {
     switch (idConcierto) {
       case 1:
@@ -55,7 +68,7 @@ comprar(idConcierto: number): void {
       case 14:
         return 'assets/carrusel/1975.jpg';
       default:
-        return 'assets/concierto2.jpg'; // Retornar null si no hay una imagen asociada
+        return 'assets/concierto2.jpg'; // Retornar una imagen predeterminada si no hay una asociada
     }
   }
 }

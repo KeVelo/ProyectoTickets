@@ -8,8 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./inicio-sesion.component.css']
 })
 export class InicioSesionComponent {
-  username: string = ''; // Cambiado de 'email' a 'username'
+  username: string = ''; 
   password: string = '';
+  showModal: boolean = false;
+  modalTitle: string = '';
+  modalMessage: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -18,22 +21,26 @@ export class InicioSesionComponent {
     this.authService.login(this.username, this.password).subscribe(
       response => {
         console.log('Login exitoso:', response);
-        alert('Inicio de sesión exitoso');
         this.authService.setToken(response.access_token);
 
-        // Verificar si hay una URL de redirección almacenada
         const redirectUrl = localStorage.getItem('redirectUrl');
         if (redirectUrl) {
           this.router.navigateByUrl(redirectUrl);
-          localStorage.removeItem('redirectUrl'); // Limpiar la URL de redirección después de usarla
+          localStorage.removeItem('redirectUrl');
         } else {
-          this.router.navigate(['/home']); // Redirige a la página principal si no hay URL almacenada
+          this.router.navigate(['/home']);
         }
       },
       error => {
         console.error('Error de autenticación:', error.message);
-        alert('Credenciales incorrectas o error en la autenticación. Por favor, inténtalo de nuevo.');
+        this.showModal = true;
+        this.modalTitle = 'Error de autenticación';
+        this.modalMessage = 'Credenciales incorrectas o error en la autenticación. Por favor, inténtalo de nuevo.';
       }
     );
+  }
+
+  closeModal(): void {
+    this.showModal = false;
   }
 }

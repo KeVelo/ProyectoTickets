@@ -11,6 +11,9 @@ export class RegistroComponent {
   nombre: string = '';
   email: string = '';
   password: string = '';
+  showModal: boolean = false;
+  modalTitle: string = '';
+  modalMessage: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -25,13 +28,24 @@ export class RegistroComponent {
     this.authService.register(this.nombre, this.email, this.password, 1).subscribe(
       response => {
         console.log('Registro exitoso:', response);
-        alert('Usuario registrado con éxito');
-        this.router.navigate(['/inicio-sesion']); // Redirige al login después de registrarse
+        this.showModal = true;
+        this.modalTitle = 'Registro Exitoso';
+        this.modalMessage = 'Usuario registrado con éxito. Redirigiendo al inicio de sesión.';
+        setTimeout(() => {
+          this.closeModal();
+          this.router.navigate(['/inicio-sesion']);
+        }, 2000); // Cierra el modal después de 2 segundos y redirige
       },
       error => {
         console.error('Error de registro:', error.message);
-        alert('Error al registrar el usuario. Por favor, verifica los datos e inténtalo de nuevo.');
+        this.showModal = true;
+        this.modalTitle = 'Error de Registro';
+        this.modalMessage = 'Error al registrar el usuario. Por favor, verifica los datos e inténtalo de nuevo.';
       }
     );
+  }
+
+  closeModal(): void {
+    this.showModal = false;
   }
 }

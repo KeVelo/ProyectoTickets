@@ -44,6 +44,12 @@
     </button>
   </div>
 </section>
+<app-modal 
+    [isVisible]="showModal" 
+    [title]="modalTitle" 
+    [message]="modalMessage" 
+    (close)="closeModal()">
+  </app-modal>
 
 <app-footer></app-footer>
 

@@ -11,6 +11,11 @@ export class ProcesoCompraComponent implements OnInit {
   localidadSeleccionada: string = '';
   cantidadBoletos: number = 1;
   precioBase: number = 0;
+  
+  // Variables para el modal
+  showModal: boolean = false;
+  modalTitle: string = '';
+  modalMessage: string = '';
 
   constructor(private router: Router) {
     const navigation = this.router.getCurrentNavigation();
@@ -31,6 +36,18 @@ export class ProcesoCompraComponent implements OnInit {
   
   ngOnInit(): void {}
 
+  procesarCompra(): void {
+    this.showModal = true;
+    this.modalTitle = 'Compra Exitosa';
+    this.modalMessage = `Has adquirido ${this.cantidadBoletos} boletos para el concierto: ${this.concierto.nombre_concierto}.`;
+    
+    // Cierra el modal después de 3 segundos y redirige a la página de inicio
+    setTimeout(() => {
+      this.closeModal();
+      this.router.navigate(['/']);
+    }, 3000);
+  }
+
   editarCompra(): void {
     if (this.concierto && this.concierto.id_concierto) {
       this.router.navigate(['/seleccion', this.concierto.id_concierto], {
@@ -46,14 +63,19 @@ export class ProcesoCompraComponent implements OnInit {
   }
 
   cancelarCompra(): void {
-    // Aquí puedes agregar cualquier lógica para limpiar el estado de la compra si es necesario
-    console.log('Compra cancelada. Redirigiendo a la página principal.');
+    this.showModal = true;
+    this.modalTitle = 'Compra Cancelada';
+    this.modalMessage = 'Has cancelado la compra. Regresando al inicio.';
     
-    // Redirige a la página principal
-    this.router.navigate(['/']);
+    setTimeout(() => {
+      this.closeModal();
+      this.router.navigate(['/']);
+    }, 3000);
   }
-  
-  
+
+  closeModal(): void {
+    this.showModal = false;
+  }
 
   getImagenTopPorId(idConcierto: number): string | null {
     switch (idConcierto) {

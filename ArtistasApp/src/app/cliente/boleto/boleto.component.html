@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="boleto.component.css">
+    <title>Boleto</title>
+</head>
+<body>
+    <!-- Llamada al componente Header -->
+    <app-header></app-header>
+
+    <div class="ticket-container">
+        <h2 class="ticket-title">Tus compras</h2>
+      
+        <div class="ticket-details">
+          <div class="ticket-info">
+            <h3 class="concert-title">COLDPLAY</h3>
+            <div class="ticket-columns">
+              <div class="info-column">
+                <p>Localidad</p>
+                <p><strong>Platinum</strong></p>
+              </div>
+              <div class="info-column">
+                <p>Cantidad</p>
+                <p><strong>2</strong></p>
+              </div>
+              <div class="info-column">
+                <p>Precio</p>
+                <p><strong>$190</strong></p>
+              </div>
+              <div class="info-column">
+                <p>Fecha</p>
+                <p><strong>21 Sep 24</strong></p>
+              </div>
+              <div class="info-column">
+                <p>Hora</p>
+                <p><strong>8:00 P.M</strong></p>
+              </div>
+              <div class="info-column">
+                <p>Lugar</p>
+                <p><strong>Teatro Presidente</strong></p>
+              </div>
+            </div>
+          </div>
+          <div class="qr-code">
+            <div class="qr-placeholder">QR Code Placeholder</div>
+          </div>
+        </div>
+
+        <ng-template #noTickets>
+          <div class="no-tickets">
+            <p>No tienes boletos comprados aún.</p>
+          </div>
+        </ng-template>
+      </div>
+      
+      <!-- Llamada al componente Footer -->
+      <app-footer></app-footer>
+
+      <!-- Angular Router Outlet -->
+      <router-outlet></router-outlet>
+</body>
+</html>

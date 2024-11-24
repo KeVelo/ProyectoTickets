@@ -1,0 +1,130 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #eadcf1;
+}
+
+.ticket-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.ticket-title {
+  background-color: #424182;
+  color: white;
+  padding: 10px 200px;
+  border-radius: 10px;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.ticket-details {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  width: 90%;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  gap: 20px;
+}
+
+.ticket-info {
+  width: 65%;
+  background-color: #424182;
+  color: white;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.concert-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  text-align: center; /* Centra el texto */
+}
+
+.ticket-columns {
+  display: flex;
+  flex-wrap: wrap; /* Ajusta al espacio disponible */
+  gap: 15px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  
+}
+
+.info-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido en la columna */
+  font-size: 14px;
+  gap: 5px;
+  width: calc(33.33% - 10px); /* Tres columnas */
+  text-align: center; /* Centra el texto */
+}
+
+.info-column p {
+  margin: 0; /* Elimina márgenes extra */
+  margin-bottom: 6px;
+}
+
+.qr-code {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-placeholder {
+  width: 160px;
+  height: 160px;
+  background-color: white;
+  color: #424182;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border: 2px solid #424182;
+}
+
+.no-tickets {
+  background-color: #ffffff;
+  color: #424182;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .ticket-details {
+    flex-direction: column;
+    width: 90%;
+    text-align: center;
+  }
+
+  .qr-code {
+    margin-top: 15px;
+  }
+
+  .ticket-info {
+    width: 100%;
+  }
+
+  .info-column {
+    width: 100%; /* Columnas ocupan todo el ancho en móvil */
+    text-align: center;
+  }
+}

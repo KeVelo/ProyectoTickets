@@ -12,6 +12,7 @@ import { DetalleBoletosComponent } from './admin/detalle-boletos/detalle-boletos
 import { DetalleListaComponent } from './admin/detalle-lista/detalle-lista.component';
 import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
 import { RegistroAdminComponent } from './admin/registro-admin/registro-admin.component';
+import { BoletoComponent } from './cliente/boleto/boleto.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,7 @@ const routes: Routes = [
   { path: 'registro', component: RegistroComponent }, // Ruta para el componente de registro
   { path: 'seleccion/:id', component: SeleccionBoletosComponent }, // Ruta para el componente de seleccion
   { path: 'compra', component: ProcesoCompraComponent }, // Ruta para el componente de proceso compra
-
+  { path: 'boleto', component: BoletoComponent }, // Ruta para el componente de boleto
   { path: 'dashboard', component: DashboardComponent }, // Ruta para el componente de artistas
   { path: 'admin', component: LoginAdminComponent }, // Ruta para el componente de artistas
   { path: 'registro/admin', component: RegistroAdminComponent }, // Ruta para el componente de artistas

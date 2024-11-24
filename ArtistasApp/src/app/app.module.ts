@@ -39,6 +39,8 @@ import { RegistroAdminComponent } from './admin/registro-admin/registro-admin.co
 import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
 import { SuggestionsComponent } from './cliente/suggestions/suggestions.component';
 import { ModalComponent } from './compartido/modal/modal.component';
+import { BoletoComponent } from './cliente/boleto/boleto.component';
+
 
 @NgModule({
 
@@ -64,7 +66,9 @@ import { ModalComponent } from './compartido/modal/modal.component';
     RegistroAdminComponent,
     LoginAdminComponent,
     SuggestionsComponent,
-    ModalComponent
+    ModalComponent,
+    BoletoComponent,
+  
 
 
     

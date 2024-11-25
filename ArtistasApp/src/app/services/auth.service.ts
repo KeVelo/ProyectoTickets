@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { LoginResponse } from '../login-response';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,71 +9,66 @@ import { Router } from '@angular/router';
 export class AuthService {
   private baseUrl = 'http://api.159.223.175.204.nip.io/api';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
-  register(nombre: string, email: string, password: string, idRol: number): Observable<any> {
-    const url = `${this.baseUrl}/usuarios`;
-    const body = {
-      nombre,
-      email,
-      password,
-      id_rol: idRol
-    };
-
+  login(username: string, password: string): Observable<any> {
+    const url = `${this.baseUrl}/login`; // Endpoint del login
+    const body = { username, password }; // Credenciales a enviar
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     return this.http.post<any>(url, body, { headers }).pipe(
       tap(response => {
-        localStorage.setItem('userName', nombre);
-      }),
-      catchError(error => {
-        console.error('Error en el registro:', error);
-        if (error.status === 422) {
-          return throwError(() => new Error('Error de validación: Verifica los campos ingresados.'));
+        console.log('Respuesta del servidor:', response);
+
+        // Verificar si el login fue exitoso
+        if (!response || !response.access_token) {
+          throw new Error('Login fallido. Verifica tus credenciales.');
         }
-        return throwError(() => new Error('Error al registrar el usuario. Intenta de nuevo más tarde.'));
-      })
-    );
-  }
 
-  login(username: string, password: string): Observable<LoginResponse> {
-    const url = `${this.baseUrl}/login`;
-    const body = new HttpParams()
-      .set('grant_type', 'password')
-      .set('username', username)
-      .set('password', password);
+        // Guardar el token y la información del usuario
+        localStorage.setItem('access_token', response.access_token);
+        localStorage.setItem('user_info', JSON.stringify(response.user_info));
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded'
-    });
-
-    return this.http.post<LoginResponse>(url, body.toString(), { headers }).pipe(
-      tap(response => {
-        if (response) {
-          localStorage.setItem('jwtToken', response.access_token);
-          localStorage.setItem('userEmail', username);
-        }
+        console.log('Usuario logueado:', response.user_info);
       }),
       catchError(error => {
         console.error('Error en el inicio de sesión:', error);
-        if (error.status === 401) {
-          return throwError(() => new Error('Credenciales incorrectas. Verifica tu usuario y contraseña.'));
-        }
-        return throwError(() => new Error('Error al iniciar sesión. Intenta de nuevo más tarde.'));
+        const errorMsg = error.error?.detail || 'Error al iniciar sesión.';
+        return throwError(() => new Error(errorMsg));
       })
     );
   }
 
-  setToken(token: string): void {
-    localStorage.setItem('jwtToken', token);
+  register(nombre: string, apellido: string, email: string, password: string): Observable<any> {
+    const url = `${this.baseUrl}/usuarios`;
+    const body = { 
+      nombre, 
+      apellido, 
+      email, 
+      password, 
+      id_rol: 1 // Aseguramos que todos los registros sean para rol 1
+    };
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http.post<any>(url, body, { headers }).pipe(
+      tap(response => {
+        console.log('Registro exitoso:', response);
+      }),
+      catchError(error => {
+        console.error('Error en el registro:', error);
+        return throwError(() => new Error(error.error.detail || 'Error al registrar el usuario.'));
+      })
+    );
+  }
+
+  getUserInfo(): any {
+    const userInfo = localStorage.getItem('user_info');
+    return userInfo ? JSON.parse(userInfo) : null;
   }
 
   logout(): void {
-    localStorage.removeItem('jwtToken');
-    localStorage.removeItem('userName');
-    localStorage.removeItem('userEmail');
-    this.router.navigate(['/']).then(() => {
-      window.location.reload();
-    });
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('user_info');
+    console.log('Cierre de sesión exitoso.');
   }
 }

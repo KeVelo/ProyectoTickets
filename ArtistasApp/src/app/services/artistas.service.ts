@@ -55,14 +55,13 @@ export class ArtistasService {
   }
 
   // Método para obtener las localidades de un concierto por ID de concierto
-  getLocalidades(): Observable<any[]> {
+  getLocalidadesByConciertoId(idConcierto: number): Observable<any> {
     const headers = this.getAuthHeaders();
-    return this.http.get<any[]>(this.localidadesUrl, { headers }).pipe(
+    return this.http.get<any>(`${this.localidadesUrl}?id_concierto=${idConcierto}`, { headers }).pipe(
       catchError(error => {
         console.error('Error al obtener las localidades:', error);
         return throwError(() => new Error('Error al obtener las localidades.'));
       })
     );
   }
-  
 }

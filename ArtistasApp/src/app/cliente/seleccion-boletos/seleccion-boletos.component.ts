@@ -60,28 +60,15 @@ export class SeleccionBoletosComponent implements OnInit {
   }
   
   cargarLocalidades(idConcierto: number): void {
-    this.artistasService.getLocalidades().subscribe(
+    this.artistasService.getLocalidadesByConciertoId(idConcierto).subscribe(
       (localidades) => {
-        console.log('Localidades completas:', localidades); // Verificar las localidades recibidas
-        const localidadesFiltradas = localidades.filter(
-          (localidad: any) => localidad.id_concierto === idConcierto
-        );
-  
-        // Transformar las localidades al formato esperado
-        this.localidades = [
-          { nombre: 'PLATINUM', precio: localidadesFiltradas[0]?.platinum_precio || 0 },
-          { nombre: 'VIP', precio: localidadesFiltradas[0]?.vip_precio || 0 },
-          { nombre: 'GENERAL', precio: localidadesFiltradas[0]?.general_precio || 0 },
-        ];
-  
-        console.log('Localidades filtradas y transformadas:', this.localidades);
+        this.localidades = localidades;
       },
       (error) => {
         console.error('Error al obtener las localidades:', error);
       }
     );
   }
-  
   
 
   getImagenTopPorId(idConcierto: number): string | null {
@@ -147,29 +134,18 @@ export class SeleccionBoletosComponent implements OnInit {
     }
 }
 
-comprar(): void {
-  if (this.localidadSeleccionada && this.cantidadBoletos != null && this.cantidadBoletos > 0) {
-    // Buscar el precio de la localidad seleccionada
-    const localidadSeleccionada = this.localidades.find(
-      (localidad) => localidad.nombre === this.localidadSeleccionada
-    );
-
-    if (localidadSeleccionada) {
+  comprar(): void {
+    if (this.localidadSeleccionada && this.cantidadBoletos != null && this.cantidadBoletos > 0) {
       this.router.navigate(['/compra'], {
         state: {
           concierto: this.concierto,
-          localidadSeleccionada: localidadSeleccionada.nombre,
-          precioLocalidad: localidadSeleccionada.precio,
-          cantidadBoletos: this.cantidadBoletos,
-        },
+          localidadSeleccionada: this.localidadSeleccionada,
+          cantidadBoletos: this.cantidadBoletos
+        }
       });
     } else {
-      alert('Por favor, selecciona una localidad válida.');
+      console.warn('Por favor, selecciona una localidad y una cantidad de boletos antes de continuar.');
+      alert('Por favor, selecciona una localidad y una cantidad de boletos antes de continuar.');
     }
-  } else {
-    console.warn('Por favor, selecciona una localidad y una cantidad de boletos antes de continuar.');
-    alert('Por favor, selecciona una localidad y una cantidad de boletos antes de continuar.');
   }
-}
-
 }

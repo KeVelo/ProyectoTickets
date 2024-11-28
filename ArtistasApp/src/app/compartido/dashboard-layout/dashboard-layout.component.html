@@ -1,69 +1,105 @@
-<div class="dashboard-container">
-    <!-- Sidebar -->
-    <nav class="sidebar">
-      <div class="logo">
-        ConsierTop
-      </div>
-      <ul class="nav-links">
-        <li>
-          <a href="#">
-            <i class="fas fa-home icon"></i>
-            <span>Tablero</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fas fa-calendar-alt icon"></i>
-            <span>Lista de conciertos</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fas fa-ticket-alt icon"></i>
-            <span>Boletos vendidos</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fas fa-dollar-sign icon"></i>
-            <span>Total en boletos</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fas fa-file-alt icon"></i>
-            <span>Reporte</span>
-          </a>
-        </li>
-        <li class="section-title">Autenticación</li>
-        <li>
-          <a href="#">
-            <i class="fas fa-user-plus icon"></i>
-            <span>Nuevo admin</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fas fa-sign-out-alt icon"></i>
-            <span>Salir</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  
-    <!-- Main Content -->
-    <div class="main-content">
-      <header>
-        <div class="welcome">
-          Bienvenido@ 'Administrador' <!-- Dato quemado, luego lo puedes reemplazar con uno dinámico -->
-        </div>
-      </header>
-      <div class="content">
-        <!-- Aquí se incluirán las vistas dinámicas -->
-        <ng-content></ng-content>
-      </div>
-    </div>
-  </div>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-  
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+  <link rel="stylesheet" href="dashboard-layout.component.css">
+
+	<title>AdminHub</title>
+</head>
+<body>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="" class="brand">
+
+			<img src="assets/conciertopp.png">
+			
+			<span class="text">ConcierTop</span>
+		</a>
+		<ul class="side-menu top">
+			<li >
+				<a href="">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Tablero</span>
+				</a>
+			
+			<li>
+				<a href="">
+				<i class='bx bxs-calendar-check'></i>
+					<span class="text">Lista de conciertos</span>
+				</a>
+			</li>
+			<li>
+				<a href="">
+				<i class='bx bxs-receipt' ></i>
+					<span class="text">Boletos vendidos</span>
+				</a>
+			</li>
+      <li>
+				<a href="">
+				<i class='bx bxs-receipt' ></i>
+					<span class="text">Total en boletos</span>
+				</a>
+			</li>
+      <li>
+				<a href="">
+				<i class='bx bxs-receipt' ></i>
+					<span class="text">Reporte</span>
+				</a>
+			</li>
+
+
+		    
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="">
+					<i class='bx bxs-cog' ></i>
+					<span class="text">Nuevo Admin</span>
+				</a>
+			</li>
+			<li>
+				<a href="" class="logout">
+				<i class='bx bxs-x-square bx-rotate-90' ></i>
+					<span class="text">Salir</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		 <nav>
+			<i class='bx bx-menu' ></i>
+			
+
+			<div class="user-info">
+				<i class='bx bxs-user-circle'></i>
+				<span class="user-name">¡Hola,</span>
+			</div>
+		
+		</nav>
+		<!-- NAVBAR -->
+
+		
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
+
+</body>
+</html>
+
+

@@ -13,8 +13,12 @@ import { DetalleListaComponent } from './admin/detalle-lista/detalle-lista.compo
 import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
 import { RegistroAdminComponent } from './admin/registro-admin/registro-admin.component';
 import { BoletoComponent } from './cliente/boleto/boleto.component';
+import { AgregarConciertoComponent} from './admin/agregar-concierto/agregar-concierto.component';
 
 
+
+
+import { DashboardLayoutComponent } from './compartido/dashboard-layout/dashboard-layout.component';
 const routes: Routes = [
   { path: 'artistas', component: ArtistasListComponent }, // Ruta para el componente de artistas
   
@@ -30,6 +34,8 @@ const routes: Routes = [
   { path: 'totalboletos', component: DetalleBoletosComponent }, // Ruta para el componente de artistas
   { path: 'lista', component: DetalleListaComponent }, // Ruta para el componente de artistas
   { path: '', component: PaginaPrincipalComponent }, // Ruta por defecto que muestra PaginaPrincipalComponent
+  { path: 'layoutdasboard', component: DashboardLayoutComponent }, // Ruta para el componente de la dasboar principal de admin
+  { path: 'agregar', component: AgregarConciertoComponent }, // el admin agregaa un concierto
   { path: '**', redirectTo: '' } // Redirige a la ruta por defecto para cualquier ruta no reconocida
 ];
 

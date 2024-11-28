@@ -1,0 +1,182 @@
+/* Establece el fondo de la página */
+body {
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin: 0;
+}
+
+/* Estilo del encabezado */
+h1 {
+    color: #343a40;
+    margin-bottom: 20px;
+    text-align: center; /* Centra el título en pantallas pequeñas */
+}
+
+/* Estilo de las imágenes en la tabla */
+table img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Cambiar el color de los encabezados de la tabla */
+table thead th {
+    background-color: #6f42c1 !important; /* Morado */
+    color: white; /* Texto blanco */
+    text-transform: uppercase; /* Opcional: Mayúsculas */
+}
+
+/* Botones de editar y eliminar */
+.btn-edit {
+    background-color: #ffc107;
+    border: none;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+}
+
+/* Botón de agregar concierto */
+.btn-primary {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+}
+
+.btn-primary:hover {
+    background-color: #5a2e9e; /* Un tono más oscuro para el hover */
+    border-color: #5a2e9e;
+}
+
+/* Botón de imprimir */
+#print-btn {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+    color: white; /* Asegúrate de que el texto sea blanco */
+}
+
+#print-btn:hover {
+    background-color: #5a2e9e;
+    border-color: #5a2e9e;
+}
+
+/* Asegurar que el contenedor del CRUD tenga márgenes apropiados */
+.container-fluid {
+    padding: 20px;
+    max-width: 100%;
+    margin-top: 20px; /* Espacio desde el encabezado */
+}
+
+/* Ajustes para pantallas pequeñas y medianas */
+@media (max-width: 768px) {
+    /* Ajustar el padding del contenedor */
+    .container-fluid {
+        padding: 10px;
+    }
+
+    /* Asegurar que los formularios y las tablas sean más fluidos */
+    .col-md-6, .col-md-12 {
+        flex: 0 0 100%; /* Asegura que ocupen el 100% del ancho disponible */
+        max-width: 100%; /* Evita que los elementos se corten */
+        margin-bottom: 15px; /* Espacio entre los campos del formulario */
+    }
+
+    /* Asegura que las tablas sean totalmente accesibles */
+    .table-responsive {
+        overflow-x: auto;
+        margin-top: 20px;
+    }
+
+    table {
+        width: 100%; /* La tabla debe ocupar el 100% del ancho */
+    }
+
+    h1 {
+        font-size: 1.5rem; /* Reduce el tamaño del título en pantallas pequeñas */
+    }
+
+    .btn-primary {
+        width: 100%; /* Botón de agregar concierto ocupa todo el ancho */
+    }
+
+    .btn-secondary {
+        width: 100%; /* Botón de imprimir ocupa todo el ancho */
+    }
+
+    /* Ajuste para la barra de búsqueda y botones */
+    .row.mb-4 {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .col-md-8, .col-md-4 {
+        width: 100%;
+    }
+}
+
+/* Para pantallas muy pequeñas como teléfonos móviles */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.2rem; /* Hacer el título aún más pequeño */
+    }
+
+    table th, table td {
+        font-size: 0.9rem; /* Reducir el tamaño de la fuente en la tabla */
+    }
+
+    .table-responsive {
+        margin-top: 15px;
+    }
+
+    /* Asegura que los botones sean de tamaño adecuado */
+    .btn-primary, .btn-secondary {
+        font-size: 1rem; /* Ajustar tamaño de texto en los botones */
+    }
+
+    /* Ajustar el formulario */
+    .col-md-6 input {
+        width: 100%; /* Asegura que los campos del formulario ocupen todo el ancho */
+    }
+
+    /* Ajustar los campos del formulario para que se alineen correctamente */
+    .form-label {
+        font-size: 0.9rem; /* Reducir tamaño de la etiqueta del formulario */
+    }
+
+    /* Agregar scroll cuando el contenido no cabe en la pantalla */
+    .container-fluid {
+        overflow-y: auto; /* Permitir desplazamiento vertical en pantallas pequeñas */
+        max-height: 100vh; /* Limitar la altura máxima */
+    }
+}
+
+/* Soluciones para iPhone y pantallas pequeñas */
+@media (max-width: 420px) {
+    .container-fluid {
+        padding: 5px;
+        overflow-y: auto; /* Permitir desplazamiento vertical */
+    }
+
+    /* Asegura que los campos no estén demasiado cerca unos de otros */
+    .col-md-6, .col-md-12 {
+        margin-bottom: 10px;
+    }
+
+    /* Mejora el comportamiento del formulario */
+    .form-control {
+        font-size: 0.85rem; /* Tamaño de fuente más pequeño en dispositivos pequeños */
+    }
+
+    /* Reduce los márgenes de la tabla */
+    table {
+        margin-top: 10px;
+    }
+
+    /* Ajustar el tamaño de las tablas para pantallas pequeñas */
+    .table-responsive {
+        overflow-x: auto; /* Permite desplazamiento horizontal en tablas */
+        margin-top: 15px;
+    }
+}

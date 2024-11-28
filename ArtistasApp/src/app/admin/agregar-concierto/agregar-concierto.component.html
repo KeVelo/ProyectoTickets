@@ -1,1 +1,98 @@
-<p>agregar-concierto works!</p>
+  <!-- Llamada al componente Header -->
+  <app-dashboard-layout></app-dashboard-layout>
+  
+  <div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+      <h1 class="text-center mb-4">Lista de Conciertos</h1>
+      
+      <form [formGroup]="conciertosForm" (ngSubmit)="guardarConcierto()" class="row g-3 mb-5">
+        <div class="col-md-6">
+          <label for="nombre_concierto" class="form-label">Nombre del Concierto</label>
+          <input type="text" class="form-control" formControlName="nombre_concierto" required>
+        </div>
+        <div class="col-md-6">
+          <label for="fecha_concierto" class="form-label">Fecha</label>
+          <input type="date" class="form-control" formControlName="fecha_concierto" required>
+        </div>
+        <div class="col-md-6">
+          <label for="hora_inicio" class="form-label">Hora inicio</label>
+          <input type="time" class="form-control" formControlName="hora_inicio" required>
+        </div>
+        <div class="col-md-6">
+          <label for="hora_apertura" class="form-label">Hora Apertura</label>
+          <input type="time" class="form-control" formControlName="hora_apertura" required>
+        </div>
+        <div class="col-md-6">
+          <label for="precio_base" class="form-label">Precio</label>
+          <input type="number" class="form-control" formControlName="precio_base" required>
+        </div>
+        <div class="col-md-6">
+          <label for="id_lugar" class="form-label">Lugar</label>
+          <select class="form-control" formControlName="id_lugar" required>
+            <option value="">Selecciona un lugar</option>
+            <option *ngFor="let lugar of lugares" [value]="lugar.id">{{lugar.nombre}}</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="imagen_concierto" class="form-label">Imagen perfil</label>
+          <input type="text" class="form-control" formControlName="imagen_concierto">
+        </div>
+
+        <div class="col-12 text-center">
+          <button type="submit" class="btn btn-primary">
+            {{ conciertoEditando ? 'Actualizar Concierto' : 'Agregar Concierto' }}
+          </button>
+          <button type="button" class="btn btn-secondary ms-2" (click)="resetFormulario()">
+            Cancelar
+          </button>
+        </div>
+      </form>
+
+      <div class="row mb-4">
+        <div class="col-md-8">
+          <input type="text" id="search-concert" class="form-control" placeholder="Buscar conciertos...">
+        </div>
+        <div class="col-md-4 text-end">
+          <button id="print-btn" class="btn btn-secondary" (click)="imprimirConciertos()">Imprimir</button>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table id="tablaConciertos" class="table table-bordered table-hover text-center">
+          <thead class="table-dark">
+            <tr>
+              <th>Nombre</th>
+              <th>Fecha</th>
+              <th>Hora inicio</th>
+              <th>Hora apertura</th>
+              <th>Precio</th>
+              <th>Lugar</th>
+              <th>Imagen</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let concierto of conciertos">
+              <td>{{ concierto.nombre_concierto }}</td>
+              <td>{{ concierto.fecha_concierto | date:'dd/MM/yyyy' }}</td>
+              <td>{{ concierto.hora_inicio }}</td>
+              <td>{{ concierto.hora_apertura }}</td>
+              <td>{{ concierto.precio_base | currency }}</td>
+              <td>{{ getLugarNombre(concierto.id_lugar) }}</td>
+              <td><img [src]="concierto.imagen_concierto ? '/assets/images/' + concierto.imagen_concierto : 'default-image.jpg'" alt="Imagen" style="width: 100px; height: auto;"></td>
+
+              <td>
+                <button class="btn btn-sm btn-warning me-2" (click)="editarConcierto(concierto)">Editar</button>
+                <button class="btn btn-sm btn-danger" (click)="eliminarConcierto(concierto)">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Angular Router Outlet -->
+  <router-outlet></router-outlet>

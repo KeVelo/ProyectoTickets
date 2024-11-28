@@ -95,15 +95,15 @@ export class PaginaPrincipalComponent implements OnInit, OnDestroy {
         return 'assets/concierto-carrusel/karolg.jpg';
       case 4:
         return 'assets/concierto-carrusel/luis.jpg';
-      case 10:
+      case 5:
         return 'assets/concierto-carrusel/cas.jpg';
-      case 11:
+      case 6:
         return 'assets/concierto-carrusel/aespa.jpg';
-      case 12:
+      case 7:
         return 'assets/concierto-carrusel/stray.jpg';
-      case 13:
+      case 8:
         return 'assets/concierto-carrusel/mcr.jpg';
-      case 14:
+      case 9:
         return 'assets/concierto-carrusel/1975.jpg';
       default:
         return null;

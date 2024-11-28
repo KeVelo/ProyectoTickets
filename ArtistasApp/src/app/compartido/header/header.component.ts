@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  userName: string | null = null;
+  userName: string | null = null; // Almacena el nombre del usuario
   isLoggedIn: boolean = false;
   searchQuery: string = ''; // Almacena el término de búsqueda
   sugerencias: any[] = []; // Lista de sugerencias
@@ -21,22 +21,30 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Actualiza el estado del usuario al inicializar el componente
     this.authService.getLoggedInStatus().subscribe((status) => {
       this.isLoggedIn = status;
-      this.actualizarUsuario();
+      if (this.isLoggedIn) {
+        this.loadUserName();
+      }
     });
-
-    this.actualizarUsuario();
   }
 
-  actualizarUsuario(): void {
-    this.userName = this.authService.getUserName();
+  loadUserName(): void {
+    this.authService.fetchUserInfo().subscribe(
+      (userInfo) => {
+        this.userName = userInfo.nombre || 'Usuario';
+      },
+      (error) => {
+        console.error('Error al cargar la información del usuario:', error);
+      }
+    );
   }
 
   logout(): void {
     this.authService.logout();
-    this.actualizarUsuario(); // Actualiza el estado del header
-    this.router.navigate(['/inicio-sesion']);
+    this.userName = null; // Actualiza el estado del header
+    this.router.navigate(['/']);
   }
 
   buscarConcierto(): void {
@@ -61,9 +69,13 @@ export class HeaderComponent implements OnInit {
     if (this.searchQuery.trim().length > 0) {
       this.artistasService.getConciertos().subscribe(
         (conciertos) => {
-          this.sugerencias = conciertos.filter((concierto) =>
-            concierto.nombre_concierto.toLowerCase().includes(this.searchQuery.toLowerCase())
-          ).slice(0, 5); // Limitar el número de sugerencias
+          this.sugerencias = conciertos
+            .filter((concierto) =>
+              concierto.nombre_concierto
+                .toLowerCase()
+                .includes(this.searchQuery.toLowerCase())
+            )
+            .slice(0, 5); // Limitar el número de sugerencias
         },
         (error) => {
           console.error('Error al buscar sugerencias:', error);

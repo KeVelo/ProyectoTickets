@@ -64,15 +64,15 @@ export class ArtistasListComponent implements OnInit {
         return 'assets/carrusel/karolg.jpg';
       case 4:
         return 'assets/carrusel/luis.png';
-      case 10:
+      case 5:
         return 'assets/carrusel/cas.jpg';
-      case 11:
+      case 6:
         return 'assets/carrusel/aespa.jpg';
-      case 12:
+      case 7:
         return 'assets/carrusel/stray.jpg';
-      case 13:
+      case 8:
         return 'assets/carrusel/mcr.jpg';
-      case 14:
+      case 9:
         return 'assets/carrusel/1975.jpg';
       default:
         return 'assets/concierto2.jpg'; // Retornar una imagen predeterminada si no hay una asociada

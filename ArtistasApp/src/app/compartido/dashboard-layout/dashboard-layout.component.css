@@ -1,112 +1,616 @@
-/* Contenedor principal */
-.dashboard-container {
-  padding: 0px 0px; /* Ajusta el padding general del navbar */
-  overflow-x: auto; /* Enable horizontal scrolling if needed */
-  white-space: nowrap; /* Prevent wrapping of content */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+:root {
+	--poppins: 'Poppins', sans-serif;
+	--lato: 'Lato', sans-serif;
+
+	--light: #F9F9F9;
+	--blue: #3C91E6;
+	--light-blue: #CFE8FF;
+	--grey: #eee;
+	--dark-grey: #AAAAAA;
+	--dark: #342E37;
+	--red: #d25450;
+	--yellow: #FFCE26;
+	--light-yellow: #FFF2C6;
+	--orange: #FD7238;
+	--light-orange: #FFE0D3;
+	--color1:#3C4557;
+	--color2:#303845;
+	--green:#52d74d;
+  --lila:#424182;
+  --lilamore:#c2b4e6;
+  
+
 
 }
 
-/* Sidebar Estático y Fijo */
-.sidebar {
-  width: 250px;                /* Ancho fijo para el sidebar */
-  background-color: #3f2a89;   /* Color de fondo */
-  color: white;                /* Color del texto */
-  padding: 20px;               /* Espacio interior */
-  display: flex;               /* Hacer uso de flexbox */
-  flex-direction: column;      /* Colocar los elementos en columna */
-  position: fixed;             /* Posicionar el sidebar de manera fija */
-  top: 0;                      /* Fijarlo al principio de la ventana */
-  left: 0;                     /* Fijarlo al lado izquierdo de la ventana */
-  height: 100%;                /* Abarcar todo el alto de la pantalla */
-  box-sizing: border-box;      /* Asegurar que el padding se incluya en el ancho total */
+
+
+  
+
+html {
+	overflow-x: hidden;
 }
 
-.logo {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 40px;
-  text-align: center;
+body.dark {
+	--light: #0C0C1E;
+	--grey: #060714;
+	--dark: #FBFBFB;
 }
 
-/* Links de navegación */
-.nav-links {
-  list-style: none;
-  padding: 0;
+body {
+	background: var(--grey); /*donde esta la tabla el fondo*/
+	overflow-x: hidden;
 }
 
-.nav-links li {
-  margin: 30px 0; /*espacio entre botones*/
+/* Estilos para la sección de información del usuario */
+.user-info {
+    display: flex;
+    align-items: center;
+    padding: 2px;/*tamaño del cuadro*/
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+	margin: 4px 0 8px 0; /* Ajuste de margen superior */
 }
 
-/* Links de navegación */
-.nav-links a {
-  color: #fff; /* Texto blanco */
-  text-decoration: none;
-  font-size: 18px;
-  display: flex;
-  align-items: center;
-  transition: color 0.3s ease; /* Suaviza el cambio de color */
+.user-info i {
+    font-size: 40px;
+    color: #4a90e2;
+    margin-right: 10px;
 }
 
-.nav-links a .icon {
-color: #90752A; /* Color amarillo fijo para el icono */
-margin-right: 15px; /* Espacio entre el icono y el texto */
-font-size: 18px;
-display: inline-block;
-width: 24px; /* Tamaño consistente para todos los íconos */
-text-align: center; /* Asegura que los iconos estén centrados */
+.user-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #333;
+    font-weight: 600;
 }
 
 
-/* Cuando el enlace está seleccionado o en hover */
-.nav-links a:hover, .nav-links a.active {
-  color: #ffd700; /* Texto amarillo al seleccionar */
+
+/* SIDEBAR */
+/* SIDEBAR */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100%;
+    background: linear-gradient(to right, var(--lila), var(--lila));
+    z-index: 2000;
+    font-family: var(--lato);
+    transition: .3s ease;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+#sidebar::--webkit-scrollbar {
+    display: none;
+}
+#sidebar.hide {
+    width: 75px;
+}
+#sidebar .brand  {
+    font-size: 20px;
+    font-weight: 700;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    color: var(--light);/*color de letra del titulo*/
+    position: sticky;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to right, var(--lila), var(--lila));/*fonde del titulo */
+    z-index: 500;
+    padding-bottom: 20px;
+    box-sizing: content-box;
+    margin-top: 5px;
 }
 
-.nav-links a.active .icon, 
-.nav-links a:hover .icon {
-  color: #ffd700; /* El icono se mantiene amarillo */
+#sidebar .brand img { /*logo*/
+    width: 50px;
+    height: 80px; /*tamaño logo*/
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: 14px;
+    margin-right: 15px; /* Añade espacio entre el logo y el texto */
+    
+}
+
+.brand img{
+    position: relative;
+    display: block;
+    min-width: 59px;
+    height: 59px;
+    line-height: 75px;
+    text-align: center;
+    
+  }
+
+
+#sidebar .brand .bx {
+    min-width: 60px;
+    display: flex;
+    justify-content: center;
+}
+#sidebar .side-menu {
+    width: 100%; /* tamaño de las categorias*/
+    margin-top: 48px;
+}
+#sidebar .side-menu li {
+    height: 48px;
+    background: transparent;
+    margin-left: 0px;
+    border-radius: 48px 0 0 48px;
+    padding: 4px;
+}
+#sidebar .side-menu li.active {
+    background: var(--grey);/*color detras de la dasbord al seleccionar una opcion pero atras*/
+    position: relative;
+}
+#sidebar .side-menu li.active::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    top: -40px;
+    right: 0;
+    box-shadow: 20px 20px 0 linear-gradient(to right, var(--lila), var(--lila)); /*color de fondo de donde esta el titulo del laterla lo de atras*/
+    
+    z-index: -1;
+}
+#sidebar .side-menu li.active::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    bottom: -40px;
+    right: 0;
+    box-shadow: 20px -20px 0 linear-gradient(to right, var(--lila), var(--lila));/* dudoso siempre de atrasd de las opciones*/
+    z-index: -1;
+}
+#sidebar .side-menu li a {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, var(--lila), var(--lila));/*fonde del titulo *//*fondo de las opciones*/
+    display: flex;
+    align-items: center;
+    border-radius: 48px;
+    font-size: 16px;
+    color: var(--light);
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+#sidebar .side-menu.top li.active a {
+    color: var(--blue);
+}
+#sidebar.hide .side-menu li a {
+    width: calc(48px - (4px * 2));
+    transition: width .3s ease;
+}
+#sidebar .side-menu li a.logout {
+    color: var(--red);
+}
+#sidebar .side-menu.top li a:hover {
+    color: var(--lilamore);
+}
+#sidebar .side-menu li a .bx {
+    min-width: calc(60px  - ((4px + 6px) * 2));
+    display: flex;
+    justify-content: center;
+}
+
+/* Estilo del ítem activo */
+.side-menu li.active a {
+    color:#c2b4e6; /* Cambia el texto a azul */
+    background: rgba(255, 255, 255, 0.2); /* Fondo con transparencia */
+    border-radius: 10px; /* Borde redondeado */
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+/* SIDEBAR */
+
+/* SIDEBAR */
+
+
+
+
+
+
+/* CONTENT */
+#content {
+	position: relative;
+	width: calc(100% - 280px);
+	left: 280px;
+	transition: .3s ease;
+}
+#sidebar.hide ~ #content {
+	width: calc(100% - 60px);
+	left: 60px;
 }
 
 
-/* Título de secciones */
-.section-title {
-  font-size: 14px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin: 20px 0 10px;
-  color: #f2ebeb;
+
+
+/* NAVBAR */
+#content nav {
+	height: 56px;
+	background: var(--light);
+	padding: 0 24px;
+	display: flex;
+	align-items: center;
+	grid-gap: 24px;
+	font-family: var(--lato);
+	position: sticky;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+#content nav::before {
+	content: '';
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	bottom: -40px;
+	left: 0;
+	border-radius: 50%;
+	box-shadow: -20px -20px 0 var(--light);
+}
+#content nav a {
+	color: var(--dark);
+}
+#content nav .bx.bx-menu {
+	cursor: pointer;
+	color: var(--dark);
+}
+#content nav .nav-link {
+	font-size: 16px;
+	transition: .3s ease;
+}
+#content nav .nav-link:hover {
+	color: var(--blue);
+}
+#content nav form {
+	max-width: 400px;
+	width: 100%;
+	margin-right: auto;
+}
+#content nav form .form-input {
+	display: flex;
+	align-items: center;
+	height: 36px;
+}
+#content nav form .form-input input {
+	flex-grow: 1;
+	padding: 0 16px;
+	height: 100%;
+	border: none;
+	background: var(--grey);
+	border-radius: 36px 0 0 36px;
+	outline: none;
+	width: 100%;
+	color: var(--dark);
+}
+#content nav form .form-input button {
+	width: 36px;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: var(--blue);
+	color: var(--light);
+	font-size: 18px;
+	border: none;
+	outline: none;
+	border-radius: 0 36px 36px 0;
+	cursor: pointer;
 }
 
-/* Contenido principal */
-/* Contenido principal con espacio para el sidebar */
-.main-content {
-  margin-left: 230px;          /* Espacio a la izquierda para que no se superponga con el sidebar */
-  padding: 20px;               /* Padding opcional para el contenido */
+
+
+
+
+
+/* MAIN */
+#content main {
+	width: 100%;
+	padding: 36px 24px;
+	font-family: var(--poppins);
+	max-height: calc(100vh - 56px);
+	overflow-y: auto;
+}
+#content main .head-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	grid-gap: 16px;
+	flex-wrap: wrap;
+}
+#content main .head-title .left h1 {
+	font-size: 36px;
+	font-weight: 600;
+	margin-bottom: 10px;
+	color: var(--dark);
+}
+#content main .head-title .left .breadcrumb {
+	display: flex;
+	align-items: center;
+	grid-gap: 16px;
+}
+#content main .head-title .left .breadcrumb li {
+	color: var(--dark);
+}
+#content main .head-title .left .breadcrumb li a {
+	color: var(--dark-grey);
+	pointer-events: none;
+}
+#content main .head-title .left .breadcrumb li a.active {
+	color: var(--color2);
+	pointer-events: unset;
 }
 
-/* Header con el mensaje de bienvenida */
-header {
-  background-color: #3f2a89;
-  color: #fff;
-  padding: 15px;
-  font-size: 18px;
-  font-weight: bold;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 250px; /* Alinear con el sidebar */
-  right: 0;
-  height: 60px; /* Altura del header */
+/*cardview*/
+
+
+/* CSS refinado para box-info con diseño atractivo */
+#content main .box-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    margin-top: 36px;
 }
 
-.welcome {
-  margin-right: 20px;
+#content main .box-info li {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    width: calc(33.333% - 20px);
+    min-width: 250px;
+    max-width: 350px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
-.content {
-  padding: 20px;
-  margin-top: 60px; /* Dejar espacio para el header */
+#content main .box-info li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
+
+#content main .box-info li .bx {
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    background: linear-gradient(45deg, var(--color1), var(--color2));
+    color: #ffffff;
+}
+
+#content main .box-info li .text {
+    flex: 1;
+}
+
+#content main .box-info li .text h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+#content main .box-info li .text p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Estilos específicos para cada cardview */
+#content main .box-info li:nth-child(1) .bx {
+    background: linear-gradient(45deg, #424182, #c2b4e6);
+}
+
+#content main .box-info li:nth-child(2) .bx {
+    background: linear-gradient(45deg, #424182, #c2b4e6);
+}
+
+#content main .box-info li:nth-child(3) .bx {
+    background: linear-gradient(45deg, #FBAB7E, #F7CE68);
+}
+
+/* Ajuste para una sola cardview */
+#content main .box-info:only-child {
+    grid-template-columns: minmax(min(100%, 300px), 400px);
+}
+
+/* Efecto de sombreado al hover para box-info */
+#content main .box-info li {
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(149, 159, 195, 0.1);
+}
+
+#content main .box-info li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+
+#content main .table-data {
+	display: flex;
+	flex-wrap: wrap;
+	grid-gap: 24px;
+	margin-top: 24px;
+	width: 100%;
+	color: var(--dark);
+}
+#content main .table-data > div {
+	border-radius: 20px;
+	background: var(--light);
+	padding: 24px;
+	overflow-x: auto;
+}
+#content main .table-data .head {
+	display: flex;
+	align-items: center;
+	grid-gap: 16px;
+	margin-bottom: 24px;
+}
+#content main .table-data .head h3 {
+	margin-right: auto;
+	font-size: 24px;
+	font-weight: 600;
+}
+#content main .table-data .head .bx {
+	cursor: pointer;
+}
+
+#content main .table-data .order {
+	flex-grow: 1;
+	flex-basis: 500px;
+}
+#content main .table-data .order table {
+	width: 100%;
+	border-collapse: collapse;
+}
+#content main .table-data .order table th {
+	padding-bottom: 12px;
+	font-size: 13px;
+	text-align: left;
+	border-bottom: 1px solid var(--grey);
+}
+#content main .table-data .order table td {
+	padding: 16px 0;
+}
+#content main .table-data .order table tr td:first-child {
+	display: flex;
+	align-items: center;
+	grid-gap: 12px;
+	padding-left: 6px;
+}
+#content main .table-data .order table td img {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+#content main .table-data .order table tbody tr:hover {
+	background: var(--grey);
+}
+#content main .table-data .order table tr td .status {
+	font-size: 10px;
+	padding: 6px 16px;
+	color: var(--light);
+	border-radius: 20px;
+	font-weight: 700;
+}
+#content main .table-data .order table tr td .status.completed {
+	background: var(--green);
+}
+#content main .table-data .order table tr td .status.ocupied {
+	background: var(--blue);
+}
+#content main .table-data .order table tr td .status.pending {
+	background: var(--orange);
+}
+
+
+
+/* MAIN */
+/* CONTENT */
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+	#sidebar {
+		width: 200px;
+	}
+
+	#content {
+		width: calc(100% - 60px);
+		left: 200px;
+	}
+
+	#content nav .nav-link {
+		display: none;
+	}
+}
+
+
+
+
+
+
+@media screen and (max-width: 576px) {
+	#content nav form .form-input input {
+		display: none;
+	}
+
+	#content nav form .form-input button {
+		width: auto;
+		height: auto;
+		background: transparent;
+		border-radius: none;
+		color: var(--dark);
+	}
+
+	#content nav form.show .form-input input {
+		display: block;
+		width: 100%;
+	}
+	#content nav form.show .form-input button {
+		width: 36px;
+		height: 100%;
+		border-radius: 0 36px 36px 0;
+		color: var(--light);
+		background: var(--red);
+	}
+
+	#content nav form.show ~ .notification,
+	#content nav form.show ~ .profile {
+		display: none;
+	}
+
+	#content main .box-info {
+		grid-template-columns: 1fr;
+	}
+
+	#content main .table-data .head {
+		min-width: 420px;
+	}
+	#content main .table-data .order table {
+		min-width: 420px;
+	}
+	#content main .table-data .todo .todo-list {
+		min-width: 420px;
+	}
+}
+
+

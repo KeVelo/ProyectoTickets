@@ -11,10 +11,15 @@ import { TotalBoletosComponent } from './admin/total-boletos/total-boletos.compo
 import { DetalleBoletosComponent } from './admin/detalle-boletos/detalle-boletos.component';
 import { DetalleListaComponent } from './admin/detalle-lista/detalle-lista.component';
 import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
-import { RegistroAdminComponent } from './admin/registro-admin/registro-admin.component';
+import { AuthGuardService } from './admin/services/auth-guard.service';
 import { BoletoComponent } from './cliente/boleto/boleto.component';
+import { AgregarConciertoComponent} from './admin/agregar-concierto/agregar-concierto.component';
 
 
+
+
+
+import { DashboardLayoutComponent } from './compartido/dashboard-layout/dashboard-layout.component';
 const routes: Routes = [
   { path: 'artistas', component: ArtistasListComponent }, // Ruta para el componente de artistas
   
@@ -23,13 +28,15 @@ const routes: Routes = [
   { path: 'seleccion/:id', component: SeleccionBoletosComponent }, // Ruta para el componente de seleccion
   { path: 'compra', component: ProcesoCompraComponent }, // Ruta para el componente de proceso compra
   { path: 'boleto', component: BoletoComponent }, // Ruta para el componente de boleto
-  { path: 'dashboard', component: DashboardComponent }, // Ruta para el componente de artistas
+  { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuardService] }, // Ruta para el componente de artistas
   { path: 'admin', component: LoginAdminComponent }, // Ruta para el componente de artistas
-  { path: 'registro/admin', component: RegistroAdminComponent }, // Ruta para el componente de artistas
+
   { path: 'vendido', component: TotalBoletosComponent }, // Ruta para el componente de artistas
   { path: 'totalboletos', component: DetalleBoletosComponent }, // Ruta para el componente de artistas
   { path: 'lista', component: DetalleListaComponent }, // Ruta para el componente de artistas
   { path: '', component: PaginaPrincipalComponent }, // Ruta por defecto que muestra PaginaPrincipalComponent
+  { path: 'layoutdasboard', component: DashboardLayoutComponent }, // Ruta para el componente de la dasboar principal de admin
+  { path: 'agregar', component: AgregarConciertoComponent }, // el admin agregaa un concierto
   { path: '**', redirectTo: '' } // Redirige a la ruta por defecto para cualquier ruta no reconocida
 ];
 

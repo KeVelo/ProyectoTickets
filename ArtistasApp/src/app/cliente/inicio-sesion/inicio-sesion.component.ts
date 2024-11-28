@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./inicio-sesion.component.css'],
 })
 export class InicioSesionComponent {
-  username: string = '';
+  username: string = ''; // Cambiado de email a username
   password: string = '';
   showModal: boolean = false;
   modalTitle: string = '';
@@ -23,7 +23,6 @@ export class InicioSesionComponent {
       (response) => {
         console.log('Inicio de sesión exitoso:', response);
 
-        // Validar que el token esté en el localStorage
         const token = localStorage.getItem('access_token');
         if (token) {
           console.log('Token almacenado:', token);
@@ -37,16 +36,16 @@ export class InicioSesionComponent {
             this.router.navigate(['/home']);
           }, 2000);
         } else {
-          console.error('Token no se almacenó correctamente.');
+          console.error('Token no recibido.');
           this.modalTitle = 'Error';
-          this.modalMessage = 'No se pudo guardar el token de sesión.';
+          this.modalMessage = 'No se recibió un token válido.';
           this.showModal = true;
         }
       },
       (error) => {
         console.error('Error en el inicio de sesión:', error);
         this.modalTitle = 'Error de Inicio de Sesión';
-        this.modalMessage = error.message;
+        this.modalMessage = error.message || 'Error en el inicio de sesión. Verifique sus credenciales.';
         this.showModal = true;
       }
     );

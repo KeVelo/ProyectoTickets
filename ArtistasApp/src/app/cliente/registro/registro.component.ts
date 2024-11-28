@@ -25,7 +25,7 @@ export class RegistroComponent {
       (response) => {
         console.log('Registro exitoso:', response);
         this.modalTitle = 'Registro Exitoso';
-        this.modalMessage = 'Usuario registrado correctamente. Redirigiendo...';
+        this.modalMessage = 'Usuario registrado correctamente. Redirigiendo a inicio de sesión...';
         this.showModal = true;
 
         setTimeout(() => {
@@ -36,7 +36,7 @@ export class RegistroComponent {
       (error) => {
         console.error('Error en el registro:', error);
         this.modalTitle = 'Error de Registro';
-        this.modalMessage = error.message;
+        this.modalMessage = error.error?.detail || 'Error en el registro. Intente nuevamente.';
         this.showModal = true;
       }
     );

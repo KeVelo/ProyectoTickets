@@ -19,61 +19,58 @@
 	<!-- SIDEBAR -->
 	<section id="sidebar">
 		<a href="" class="brand">
-
-			<img src="assets/conciertopp.png">
-			
-			<span class="text">ConcierTop</span>
+		  <img src="assets/conciertopp.png" />
+		  <span class="text">ConcierTop</span>
 		</a>
 		<ul class="side-menu top">
-			<li >
-				<a href="">
-					<i class='bx bxs-dashboard' ></i>
-					<span class="text">Tablero</span>
-				</a>
-			
-			<li>
-				<a href="">
-				<i class='bx bxs-calendar-check'></i>
-					<span class="text">Lista de conciertos</span>
-				</a>
-			</li>
-			<li>
-				<a href="">
-				<i class='bx bxs-receipt' ></i>
-					<span class="text">Boletos vendidos</span>
-				</a>
-			</li>
-      <li>
-				<a href="">
-				<i class='bx bxs-receipt' ></i>
-					<span class="text">Total en boletos</span>
-				</a>
-			</li>
-      <li>
-				<a href="">
-				<i class='bx bxs-receipt' ></i>
-					<span class="text">Reporte</span>
-				</a>
-			</li>
-
-
-		    
+		  <li>
+			<a href="">
+			  <i class='bx bxs-dashboard'></i>
+			  <span class="text">Tablero</span>
+			</a>
+		  </li>
+		  <li>
+			<a href="">
+			  <i class='bx bxs-calendar-check'></i>
+			  <span class="text">Lista de conciertos</span>
+			</a>
+		  </li>
+		  <li>
+			<a href="">
+			  <i class='bx bxs-receipt'></i>
+			  <span class="text">Boletos vendidos</span>
+			</a>
+		  </li>
+		  <li>
+			<a href="">
+			  <i class='bx bxs-receipt'></i>
+			  <span class="text">Total en boletos</span>
+			</a>
+		  </li>
+		  <li>
+			<a href="">
+			  <i class='bx bxs-receipt'></i>
+			  <span class="text">Reporte</span>
+			</a>
+		  </li>
 		</ul>
 		<ul class="side-menu">
-			<li>
-				<a href="">
-					<i class='bx bxs-cog' ></i>
-					<span class="text">Nuevo Admin</span>
-				</a>
-			</li>
-			<li>
-				<a href="" class="logout">
-				<i class='bx bxs-x-square bx-rotate-90' ></i>
-					<span class="text">Salir</span>
-				</a>
-			</li>
+		  <li>
+			<a href="">
+			  <i class='bx bxs-cog'></i>
+			  <span class="text">Nuevo Admin</span>
+			</a>
+		  </li>
+		  <li>
+			<!-- Botón Salir -->
+			<a href="javascript:void(0)" (click)="logout()"> <!-- Cambia el enlace a un botón con (click) -->
+			  <i class='bx bxs-x-square bx-rotate-90'></i>
+			  <span class="text">Salir</span>
+			</a>
+		  </li>
 		</ul>
-	</section>
+	  </section>
+	  
 	<!-- SIDEBAR -->
 
 
@@ -87,7 +84,7 @@
 
 			<div class="user-info">
 				<i class='bx bxs-user-circle'></i>
-				<span class="user-name">¡Hola,</span>
+				<span class="user-name">¡Hola!, {{ userName }}</span>
 			</div>
 		
 		</nav>

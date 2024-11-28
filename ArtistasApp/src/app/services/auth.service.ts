@@ -13,17 +13,18 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<any> {
-    const url = `${this.API_URL}/login`;
-    const body = { username, password };
+    const url = `${this.API_URL}/usuarios/login`; // Endpoint correcto
+    const body = { username, password }; // Cambiado de email a username
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
+  
     return this.http.post<any>(url, body, { headers }).pipe(
       tap((response) => {
         if (response && response.access_token) {
+          // Almacenar token y datos de usuario
           localStorage.setItem('access_token', response.access_token);
-          localStorage.setItem('user_info', JSON.stringify(response.user_info));
+          localStorage.setItem('user_info', JSON.stringify(response.user_info || {}));
           console.log('Token almacenado:', response.access_token);
-
+  
           // Notificar que el usuario ha iniciado sesión
           this.isLoggedInSubject.next(true);
         } else {
@@ -36,6 +37,9 @@ export class AuthService {
       })
     );
   }
+  
+  
+  
 
   register(nombre: string, apellido: string, email: string, password: string): Observable<any> {
     const url = `${this.API_URL}/usuarios`;
@@ -62,15 +66,36 @@ export class AuthService {
     this.isLoggedInSubject.next(false);
   }
 
+  fetchUserInfo(): Observable<any> {
+    const token = localStorage.getItem('access_token');
+    if (!token) {
+      throw new Error('No se encontró el token de acceso.');
+    }
+
+    const url = `${this.API_URL}/usuarios/me`;
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.get<any>(url, { headers }).pipe(
+      tap((userInfo) => {
+        console.log('Información del usuario obtenida:', userInfo);
+        localStorage.setItem('user_info', JSON.stringify(userInfo));
+      }),
+      catchError((error) => {
+        console.error('Error al obtener la información del usuario:', error);
+        return throwError(() => new Error('No se pudo obtener la información del usuario.'));
+      })
+    );
+  }
+
   getUserInfo(): any {
     const userInfo = localStorage.getItem('user_info');
     return userInfo ? JSON.parse(userInfo) : null;
   }
 
-  getUserName(): string | null {
-    const userInfo = this.getUserInfo();
-    return userInfo?.email?.split('@')[0] || null; // Extrae la parte antes del "@"
-  }
+ 
+  
 
   isLoggedIn(): boolean {
     const token = localStorage.getItem('access_token');

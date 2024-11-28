@@ -35,11 +35,12 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { RegistroAdminComponent } from './admin/registro-admin/registro-admin.component';
+
 import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
 import { SuggestionsComponent } from './cliente/suggestions/suggestions.component';
 import { ModalComponent } from './compartido/modal/modal.component';
 import { BoletoComponent } from './cliente/boleto/boleto.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -63,7 +64,7 @@ import { BoletoComponent } from './cliente/boleto/boleto.component';
     TotalBoletosComponent,
     NuevoAdminComponent,
     DashboardLayoutComponent,
-    RegistroAdminComponent,
+
     LoginAdminComponent,
     SuggestionsComponent,
     ModalComponent,
@@ -82,6 +83,7 @@ import { BoletoComponent } from './cliente/boleto/boleto.component';
     BrowserAnimationsModule,   
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
 
 
 

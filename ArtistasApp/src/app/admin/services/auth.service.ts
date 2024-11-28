@@ -1,92 +1,81 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
-import { LoginResponse } from 'src/app/login-response';
-import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, BehaviorSubject, throwError } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  
-  private baseUrl = 'http://api.159.223.175.204.nip.io/api';
+  private API_URL = 'http://api.159.223.175.204.nip.io/api';
+  private isLoggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
 
-  constructor(private http: HttpClient, private router: Router) {}
-  
-  // Método de registro para administradores con rol 2
- 
-  register(nombre: string, email: string, password: string): Observable<any> {
-    const url = `${this.baseUrl}/usuarios`;
-    const body = {
-      nombre,
-      email,
-      password,
-      id_rol: 2 // Asegúrate de que se envíe el id_rol 2 para administradores
-    };
+  constructor(private http: HttpClient) {}
 
+  // Login del usuario
+  login(username: string, password: string): Observable<any> {
+    const url = `${this.API_URL}/usuarios/login`;
+    const body = { username, password };
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     return this.http.post<any>(url, body, { headers }).pipe(
-      tap(response => {
-        localStorage.setItem('userName', nombre);
-      }),
-      catchError(error => {
-        console.error('Error en el registro:', error);
-        if (error.status === 422) {
-          return throwError(() => new Error('Error de validación: Verifica los campos ingresados.'));
-        }
-        return throwError(() => new Error('Error al registrar el usuario. Intenta de nuevo más tarde.'));
-      })
-    );
-  }
-
-  
-
-  // Método de login que verifica el rol de administrador (rol 2)
-  login(username: string, password: string): Observable<LoginResponse> {
-    const url = `${this.baseUrl}/login`;
-    const body = new HttpParams()
-      .set('grant_type', 'password')
-      .set('username', username)
-      .set('password', password);
-  
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded'
-    });
-  
-    return this.http.post<LoginResponse>(url, body.toString(), { headers }).pipe(
-      tap(response => {
-        console.log('Respuesta completa del servidor:', response); // Verifica la respuesta
-        if (response && response.user.id_rol === 2) {
-          localStorage.setItem('jwtToken', response.access_token);
-          localStorage.setItem('userEmail', username);
+      tap((response) => {
+        if (response && response.access_token) {
+          localStorage.setItem('access_token', response.access_token);
+          this.isLoggedInSubject.next(true);
         } else {
-          throw new Error('No tienes permisos de administrador.');
+          throw new Error('No se recibió el token de acceso.');
         }
       }),
-      catchError(error => {
-        console.error('Error en el inicio de sesión:', error);
-        if (error.status === 401) {
-          return throwError(() => new Error('Credenciales incorrectas. Verifica tu usuario y contraseña.'));
-        }
-        return throwError(() => new Error('Error al iniciar sesión. Intenta de nuevo más tarde.'));
+      catchError((error) => {
+        console.error('Error en el login:', error);
+        return throwError(() => new Error(error.error?.detail || 'Error en el login.'));
       })
     );
   }
-  
 
-  setToken(token: string): void {
-    localStorage.setItem('jwtToken', token);
+  // Obtener la información del usuario
+  getUserInfo(): Observable<any> {
+    const token = localStorage.getItem('access_token');
+    if (!token) {
+      throw new Error('No se encontró el token de acceso.');
+    }
+
+    const url = `${this.API_URL}/usuarios/me`;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+
+    return this.http.get<any>(url, { headers }).pipe(
+      tap((userInfo) => {
+        console.log('Información del usuario:', userInfo);
+        localStorage.setItem('user_info', JSON.stringify(userInfo));
+      }),
+      catchError((error) => {
+        console.error('Error al obtener la información del usuario:', error);
+        return throwError(() => new Error('No se pudo obtener la información del usuario.'));
+      })
+    );
+  }
+
+  // Verificar si el usuario tiene el rol admin
+  isAdmin(): boolean {
+    const userInfo = JSON.parse(localStorage.getItem('user_info') || '{}');
+    return userInfo?.roles?.includes('admin') || false;
+  }
+
+  // Verificar si el usuario está autenticado
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('access_token');
   }
 
   logout(): void {
-    localStorage.removeItem('jwtToken');
-    localStorage.removeItem('userName');
-    localStorage.removeItem('userEmail');
-    // Redirige al usuario a la página de inicio de sesión
-    this.router.navigate(['/']).then(() => {
-      window.location.reload();
-    });
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('user_info');
+    this.isLoggedInSubject.next(false);
+  }
+
+  getLoggedInStatus(): Observable<boolean> {
+    return this.isLoggedInSubject.asObservable();
   }
 }

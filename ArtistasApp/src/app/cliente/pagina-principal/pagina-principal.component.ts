@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ArtistasService } from 'src/app/services/artistas.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-pagina-principal',
@@ -25,7 +26,11 @@ export class PaginaPrincipalComponent implements OnInit, OnDestroy {
   modalTitle: string = '';
   modalMessage: string = '';
 
-  constructor(private artistasService: ArtistasService, private router: Router) {}
+  constructor(
+    private artistasService: ArtistasService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.autoSlide();
@@ -50,11 +55,11 @@ export class PaginaPrincipalComponent implements OnInit, OnDestroy {
 
   obtenerConciertos(): void {
     this.artistasService.getConciertos().subscribe(
-      data => {
-        this.conciertos = data.filter(concert => this.getImagenPorId(concert.id_concierto) !== null);
+      (data) => {
+        this.conciertos = data.filter((concert) => this.getImagenPorId(concert.id_concierto) !== null);
         this.showConcerts();
       },
-      error => {
+      (error) => {
         console.error('Error al obtener los conciertos:', error);
       }
     );
@@ -90,15 +95,15 @@ export class PaginaPrincipalComponent implements OnInit, OnDestroy {
         return 'assets/concierto-carrusel/karolg.jpg';
       case 4:
         return 'assets/concierto-carrusel/luis.jpg';
-      case 10:
+      case 5:
         return 'assets/concierto-carrusel/cas.jpg';
-      case 11:
+      case 6:
         return 'assets/concierto-carrusel/aespa.jpg';
-      case 12:
+      case 7:
         return 'assets/concierto-carrusel/stray.jpg';
-      case 13:
+      case 8:
         return 'assets/concierto-carrusel/mcr.jpg';
-      case 14:
+      case 9:
         return 'assets/concierto-carrusel/1975.jpg';
       default:
         return null;
@@ -106,9 +111,13 @@ export class PaginaPrincipalComponent implements OnInit, OnDestroy {
   }
 
   comprar(idConcierto: number): void {
-    if (localStorage.getItem('jwtToken')) {
+    if (this.authService.isLoggedIn()) {
+      // Redirigir a la página de selección si el usuario está logueado
       this.router.navigate(['/seleccion', idConcierto]);
     } else {
+      // Guardar la URL actual para redirigir después del inicio de sesión
+      localStorage.setItem('redirectUrl', `/seleccion/${idConcierto}`);
+      
       // Mostrar modal en lugar de alert
       this.showModal = true;
       this.modalTitle = 'Inicia Sesión';

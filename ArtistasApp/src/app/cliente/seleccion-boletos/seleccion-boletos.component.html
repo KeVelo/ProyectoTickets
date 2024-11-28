@@ -70,6 +70,12 @@
 
         </section>
     </main>
+    <app-modal 
+    [isVisible]="showModal" 
+    [title]="modalTitle" 
+    [message]="modalMessage" 
+    (close)="closeModal()">
+  </app-modal>
 
     <!-- Llamada al componente Footer -->
     <app-footer></app-footer>

@@ -14,7 +14,7 @@ export class ArtistasService {
 
   // Método para obtener el token JWT del localStorage
   private getAuthHeaders(): HttpHeaders {
-    const token = localStorage.getItem('jwtToken');
+    const token = localStorage.getItem('access_token');
     return new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -64,5 +64,6 @@ export class ArtistasService {
       })
     );
   }
+  
   
 }

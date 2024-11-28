@@ -54,13 +54,15 @@ export class ProcesoCompraComponent implements OnInit {
         state: {
           concierto: this.concierto,
           localidadSeleccionada: this.localidadSeleccionada,
-          cantidadBoletos: this.cantidadBoletos
-        }
+          cantidadBoletos: this.cantidadBoletos,
+        },
       });
     } else {
       console.error('No se pudo redirigir a la selección de boletos: ID de concierto no encontrado.');
     }
   }
+  
+  
 
   cancelarCompra(): void {
     this.showModal = true;

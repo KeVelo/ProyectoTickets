@@ -8,7 +8,7 @@ import { SeleccionBoletosComponent } from './cliente/seleccion-boletos/seleccion
 import { ProcesoCompraComponent } from './cliente/proceso-compra/proceso-compra.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { TotalBoletosComponent } from './admin/total-boletos/total-boletos.component';
-import { DetalleBoletosComponent } from './admin/detalle-boletos/detalle-boletos.component';
+
 import { DetalleListaComponent } from './admin/detalle-lista/detalle-lista.component';
 import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
 import { AuthGuardService } from './admin/services/auth-guard.service';
@@ -20,6 +20,8 @@ import { AgregarConciertoComponent} from './admin/agregar-concierto/agregar-conc
 
 
 import { DashboardLayoutComponent } from './compartido/dashboard-layout/dashboard-layout.component';
+import { ConciertosComponent } from './admin/conciertos/conciertos.component';
+import { LocalidadesComponent } from './admin/localidades/localidades.component';
 const routes: Routes = [
   { path: 'artistas', component: ArtistasListComponent }, // Ruta para el componente de artistas
   
@@ -28,15 +30,23 @@ const routes: Routes = [
   { path: 'seleccion/:id', component: SeleccionBoletosComponent }, // Ruta para el componente de seleccion
   { path: 'compra', component: ProcesoCompraComponent }, // Ruta para el componente de proceso compra
   { path: 'boleto', component: BoletoComponent }, // Ruta para el componente de boleto
-  { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuardService] }, // Ruta para el componente de artistas
+  //{ path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuardService] }, // Ruta para el componente de artistas
+  { path: 'dashboard', component: DashboardComponent }, // Ruta para el componente de boleto
   { path: 'admin', component: LoginAdminComponent }, // Ruta para el componente de artistas
 
   { path: 'vendido', component: TotalBoletosComponent }, // Ruta para el componente de artistas
-  { path: 'totalboletos', component: DetalleBoletosComponent }, // Ruta para el componente de artistas
+  
   { path: 'lista', component: DetalleListaComponent }, // Ruta para el componente de artistas
   { path: '', component: PaginaPrincipalComponent }, // Ruta por defecto que muestra PaginaPrincipalComponent
   { path: 'layoutdasboard', component: DashboardLayoutComponent }, // Ruta para el componente de la dasboar principal de admin
   { path: 'agregar', component: AgregarConciertoComponent }, // el admin agregaa un concierto
+ //{ path: 'agregar', component: AgregarConciertoComponent, canActivate:[AuthGuardService] }, // Ruta para el componente de artistas
+ //{ path: 'conciertoscrud', component: ConciertosComponent },
+ { path: 'localidades', component: LocalidadesComponent },
+ { path: 'conciertoscrud', component: ConciertosComponent, canActivate:[AuthGuardService] }, // Ruta para el componente de artistas
+ 
+
+
   { path: '**', redirectTo: '' } // Redirige a la ruta por defecto para cualquier ruta no reconocida
 ];
 

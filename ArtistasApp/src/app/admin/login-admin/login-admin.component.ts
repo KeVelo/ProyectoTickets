@@ -24,7 +24,7 @@ export class LoginAdminComponent {
             // Verifica si el usuario es admin
             if (this.authService.isAdmin()) {
               alert('Inicio de sesión exitoso como administrador.');
-              this.router.navigate(['/dashboard']); // Redirige al dashboard
+              this.router.navigate(['/conciertoscrud']); // Redirige al dashboard
             } else {
               alert('No tienes permisos para esta sección.');
               this.authService.logout();

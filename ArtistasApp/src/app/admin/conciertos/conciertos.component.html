@@ -27,28 +27,32 @@
           <label for="precio_base" class="form-label">Precio</label>
           <input type="number" class="form-control" formControlName="precio_base" required>
         </div>
+     
+
         <div class="col-md-6">
           <label for="id_lugar" class="form-label">Lugar</label>
           <select class="form-control" formControlName="id_lugar" required>
             <option value="">Selecciona un lugar</option>
-            <option *ngFor="let lugar of lugares" [value]="lugar.id">{{lugar.nombre}}</option>
+            <option *ngFor="let lugar of lugares" [value]="lugar.id">
+              {{ lugar.nombre }}
+            </option>
           </select>
         </div>
-        <div class="col-md-6">
+         <!--<div class="col-md-6">
           <label for="ruta_carrusel" class="form-label">Ruta carrusel</label>
           <input type="text" class="form-control" formControlName="ruta_carrusel">
         </div>
         <div class="col-md-6">
           <label for="ruta_concierto_carrusel" class="form-label">Ruta concierto carrusel</label>
           <input type="text" class="form-control" formControlName="ruta_concierto_carrusel">
-        </div>
+        </div>-->
         <div class="col-md-6">
           <label for="estado" class="form-label">Estado</label>
           <input type="text" class="form-control" formControlName="estado" required>
         </div>
 
         <div class="col-12 text-center">
-          <button type="submit" class="btn btn-primary">
+          <button type="submit" class="btn btn-morado">
             {{ conciertoEditando ? 'Actualizar Concierto' : 'Agregar Concierto' }}
           </button>
           <button type="button" class="btn btn-secondary ms-2" (click)="resetFormulario()">Cancelar</button>
@@ -57,8 +61,27 @@
 
       <!-- Botón para imprimir la tabla -->
       <div class="text-center mb-3">
-        <button class="btn btn-success" (click)="imprimirConciertos()">Imprimir Conciertos</button>
+        <button class="btn btn-morado" (click)="imprimirConciertos()">Imprimir Conciertos</button>
       </div>
+
+      <div class="row mb-3">
+        <div class="col-md-8">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Buscar por ID de concierto"
+            [(ngModel)]="busquedaId"
+            (keyup.enter)="buscarConciertoPorId()"
+          />
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-primary" (click)="buscarConciertoPorId()">Buscar</button>
+          <button class="btn btn-secondary ms-2" (click)="resetBusqueda()">X</button>
+        </div>
+      </div>
+      
+
+      
 
       <div class="table-responsive">
         <table class="table table-bordered table-hover text-center" id="tablaConciertos">
@@ -70,7 +93,7 @@
               <th>Hora apertura</th>
               <th>Precio</th>
               <th>Lugar</th>
-              <th>Ruta Carrusel</th>
+               <!--<th>Ruta Carrusel</th>-->
               <th>Estado</th>
               <th>Acciones</th>
             </tr>
@@ -83,9 +106,13 @@
               <td>{{ concierto.hora_apertura }}</td>
               <td>{{ concierto.precio_base | currency }}</td>
               <td>{{ getLugarNombre(concierto.id_lugar) }}</td>
-              <td>
+              <!--<td>
                 <img [src]="concierto.ruta_carrusel ? concierto.ruta_carrusel : 'default-image.jpg'" style="width: 100px; height: auto;">
-              </td>
+              </td>-->
+
+              <!--<td>
+                <img [src]="concierto.ruta_concierto_carrusel ? concierto.ruta_concierto_carrusel : 'default-image.jpg'" style="width: 100px; height: auto;">
+              </td>-->
               <td>{{ concierto.estado }}</td>
               <td>
                 <button class="btn btn-sm btn-warning me-2" (click)="editarConcierto(concierto)">Editar</button>

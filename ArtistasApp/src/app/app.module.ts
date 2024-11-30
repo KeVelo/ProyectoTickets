@@ -16,7 +16,7 @@ import { ProcesoCompraComponent } from './cliente/proceso-compra/proceso-compra.
 import { SeleccionBoletosComponent } from './cliente/seleccion-boletos/seleccion-boletos.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { DetalleListaComponent } from './admin/detalle-lista/detalle-lista.component';
-import { DetalleBoletosComponent } from './admin/detalle-boletos/detalle-boletos.component';
+
 import { AgregarConciertoComponent } from './admin/agregar-concierto/agregar-concierto.component';
 import { TotalBoletosComponent } from './admin/total-boletos/total-boletos.component';
 import { NuevoAdminComponent } from './admin/nuevo-admin/nuevo-admin.component';
@@ -41,6 +41,9 @@ import { SuggestionsComponent } from './cliente/suggestions/suggestions.componen
 import { ModalComponent } from './compartido/modal/modal.component';
 import { BoletoComponent } from './cliente/boleto/boleto.component';
 import { RouterModule } from '@angular/router';
+import { ConciertosComponent } from './admin/conciertos/conciertos.component';
+import { LocalidadesComponent } from './admin/localidades/localidades.component';
+
 
 
 @NgModule({
@@ -59,7 +62,7 @@ import { RouterModule } from '@angular/router';
     SeleccionBoletosComponent,
     DashboardComponent,
     DetalleListaComponent,
-    DetalleBoletosComponent,
+    
     AgregarConciertoComponent,
     TotalBoletosComponent,
     NuevoAdminComponent,
@@ -69,6 +72,9 @@ import { RouterModule } from '@angular/router';
     SuggestionsComponent,
     ModalComponent,
     BoletoComponent,
+    ConciertosComponent,
+    LocalidadesComponent,
+    
   
 
 
@@ -100,7 +106,7 @@ import { RouterModule } from '@angular/router';
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,64 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="boleto.component.css">
-    <title>Boleto</title>
-</head>
-<body>
-    <!-- Llamada al componente Header -->
-    <app-header></app-header>
+<app-header></app-header>
 
-    <div class="ticket-container">
-        <h2 class="ticket-title">Tus compras</h2>
-      
-        <div class="ticket-details">
-          <div class="ticket-info">
-            <h3 class="concert-title">COLDPLAY</h3>
-            <div class="ticket-columns">
-              <div class="info-column">
-                <p>Localidad</p>
-                <p><strong>Platinum</strong></p>
-              </div>
-              <div class="info-column">
-                <p>Cantidad</p>
-                <p><strong>2</strong></p>
-              </div>
-              <div class="info-column">
-                <p>Precio</p>
-                <p><strong>$190</strong></p>
-              </div>
-              <div class="info-column">
-                <p>Fecha</p>
-                <p><strong>21 Sep 24</strong></p>
-              </div>
-              <div class="info-column">
-                <p>Hora</p>
-                <p><strong>8:00 P.M</strong></p>
-              </div>
-              <div class="info-column">
-                <p>Lugar</p>
-                <p><strong>Teatro Presidente</strong></p>
-              </div>
-            </div>
+<div class="ticket-container">
+  <h2 class="ticket-title">Tus compras</h2>
+
+  <div *ngIf="boletos.length > 0; else noTickets">
+    <div *ngFor="let boleto of boletos" class="ticket-details">
+      <div class="ticket-info">
+        <h3 class="concert-title">{{ boleto.concierto }}</h3>
+        <div class="ticket-columns">
+          <div class="info-column">
+            <p>Localidad</p>
+            <p><strong>{{ boleto.localidad }}</strong></p>
           </div>
-          <div class="qr-code">
-            <div class="qr-placeholder">QR Code Placeholder</div>
+          <div class="info-column">
+            <p>Cantidad</p>
+            <p><strong>{{ boleto.cantidad }}</strong></p>
+          </div>
+          <div class="info-column">
+            <p>Precio</p>
+            <p><strong>${{ boleto.precio_final }}</strong></p>
+          </div>
+          <div class="info-column">
+            <p>Fecha</p>
+            <p><strong>{{ boleto.fecha_compra | date: 'dd MMM yy' }}</strong></p>
+          </div>
+          <div class="info-column">
+            <p>Hora</p>
+            <p><strong>{{ boleto.hora_compra }}</strong></p>
+          </div>
+          <div class="info-column">
+            <p>Lugar</p>
+            <p><strong>{{ boleto.lugar }}</strong></p>
           </div>
         </div>
-
-        <ng-template #noTickets>
-          <div class="no-tickets">
-            <p>No tienes boletos comprados aún.</p>
-          </div>
-        </ng-template>
       </div>
-      
-      <!-- Llamada al componente Footer -->
-      <app-footer></app-footer>
+      <div class="qr-code">
+        <img [src]="'data:image/png;base64,' + boleto.qr_imagen" alt="QR Code" />
+      </div>
+    </div>
+  </div>
 
-      <!-- Angular Router Outlet -->
-      <router-outlet></router-outlet>
-</body>
-</html>
+  <ng-template #noTickets>
+    <div class="no-tickets">
+      <p>No tienes boletos comprados aún.</p>
+    </div>
+  </ng-template>
+</div>
+
+<app-footer></app-footer>
+<router-outlet></router-outlet>

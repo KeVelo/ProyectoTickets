@@ -9,6 +9,7 @@ import { catchError } from 'rxjs/operators';
 export class BoletosService {
   private boletosUrl = 'http://api.159.223.175.204.nip.io/api/boletos';
   private transaccionesUrl = 'http://api.159.223.175.204.nip.io/api/transacciones';
+  
 
   constructor(private http: HttpClient) {}
 
@@ -20,6 +21,7 @@ export class BoletosService {
       'Content-Type': 'application/json',
     });
   }
+  
 
   // Crear un boleto
   crearBoleto(data: any): Observable<any> {
@@ -41,13 +43,14 @@ export class BoletosService {
   // Validar un boleto
   validarBoleto(idBoleto: number): Observable<any> {
     const headers = this.getAuthHeaders();
-    return this.http.get<any>(`${this.boletosUrl}/validate/${idBoleto}`, { headers }).pipe(
+    return this.http.get<any>(`${this.boletosUrl}/api/validate/${idBoleto}`, { headers }).pipe(
       catchError((error) => {
-        console.error('Error al validar boleto:', error);
+        console.error(`Error al validar el boleto con ID ${idBoleto}:`, error);
         return throwError(() => new Error('Error al validar el boleto.'));
       })
     );
   }
+  
 
   // Crear una transacción
   crearTransaccion(data: any): Observable<any> {
@@ -62,7 +65,7 @@ export class BoletosService {
 
   // Obtener boletos por el usuario actual
   getBoletos(): Observable<any[]> {
-    const headers = this.getAuthHeaders(); // Asegúrate de que este método devuelve encabezados válidos
+    const headers = this.getAuthHeaders();
     return this.http.get<any[]>(`${this.boletosUrl}/by_current_user_id`, { headers }).pipe(
       catchError((error) => {
         console.error('Error al obtener los boletos:', error);
@@ -70,5 +73,9 @@ export class BoletosService {
       })
     );
   }
+  
+  
+  
+  
   
 }

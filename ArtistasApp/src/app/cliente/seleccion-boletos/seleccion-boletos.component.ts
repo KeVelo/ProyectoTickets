@@ -120,51 +120,51 @@ export class SeleccionBoletosComponent implements OnInit {
 
   getImagenTopPorId(idConcierto: number): string | null {
     switch (idConcierto) {
-      case 1:
-        return 'assets/carrusel/artic_monkeys.jpg';
-      case 2:
-        return 'assets/carrusel/metallica.jpg';
-      case 3:
-        return 'assets/carrusel/karolg.jpg';
-      case 4:
-        return 'assets/carrusel/luis.png';
-      case 5:
-        return 'assets/carrusel/cas.jpg';
-      case 6:
-        return 'assets/carrusel/aespa.jpg';
-      case 7:
-        return 'assets/carrusel/stray.jpg';
-      case 8:
-        return 'assets/carrusel/mcr.jpg';
-      case 9:
-        return 'assets/carrusel/1975.jpg';
-      default:
-        return null;
+      case 37:
+      return 'assets/carrusel/artic_monkeys.jpg';
+    case 38:
+      return 'assets/carrusel/metallica.jpg';
+    case 39:
+      return 'assets/carrusel/karolg.jpg';
+    case 40:
+      return 'assets/carrusel/luis.jpg';
+    case 32:
+      return 'assets/carrusel/cas.jpg';
+    case 33:
+      return 'assets/carrusel/aespa.jpg';
+    case 34:
+      return 'assets/carrusel/stray.jpg';
+    case 35:
+      return 'assets/carrusel/mcr.jpg';
+    case 36:
+      return 'assets/carrusel/1975.jpg';
+    default:
+      return 'assets/carrusel2.jpg'; 
     }
   }
 
   getImagenPorId(idConcierto: number): string | null {
     switch (idConcierto) {
-      case 1:
-        return 'assets/concierto-carrusel/artic_monkeys.jpg';
-      case 2:
-        return 'assets/concierto-carrusel/metallica.jpg';
-      case 3:
-        return 'assets/concierto-carrusel/karolg.jpg';
-      case 4:
-        return 'assets/concierto-carrusel/luis.jpg';
-      case 5:
-        return 'assets/concierto-carrusel/cas.jpg';
-      case 6:
-        return 'assets/concierto-carrusel/aespa.jpg';
-      case 7:
-        return 'assets/concierto-carrusel/stray.jpg';
-      case 8:
-        return 'assets/concierto-carrusel/mcr.jpg';
-      case 9:
-        return 'assets/concierto-carrusel/1975.jpg';
-      default:
-        return null;
+      case 37:
+      return 'assets/concierto-carrusel/artic_monkeys.jpg';
+    case 38:
+      return 'assets/concierto-carrusel/metallica.jpg';
+    case 39:
+      return 'assets/concierto-carrusel/karolg.jpg';
+    case 40:
+      return 'assets/concierto-carrusel/luis.jpg';
+    case 32:
+      return 'assets/concierto-carrusel/cas.jpg';
+    case 33:
+      return 'assets/concierto-carrusel/aespa.jpg';
+    case 34:
+      return 'assets/concierto-carrusel/stray.jpg';
+    case 35:
+      return 'assets/concierto-carrusel/mcr.jpg';
+    case 36:
+      return 'assets/concierto-carrusel/1975.jpg';
+    default:
+      return 'assets/concierto2.jpg'; 
     }
   }
 

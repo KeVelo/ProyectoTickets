@@ -8,34 +8,34 @@
       <div class="ticket-info">
         <h3 class="concert-title">{{ boleto.concierto }}</h3>
         <div class="ticket-columns">
-          <div class="info-column">
+          <div *ngIf="boleto.localidad" class="info-column">
             <p>Localidad</p>
             <p><strong>{{ boleto.localidad }}</strong></p>
           </div>
-          <div class="info-column">
+          <div *ngIf="boleto.cantidad" class="info-column">
             <p>Cantidad</p>
             <p><strong>{{ boleto.cantidad }}</strong></p>
           </div>
-          <div class="info-column">
+          <div *ngIf="boleto.precio_final" class="info-column">
             <p>Precio</p>
             <p><strong>${{ boleto.precio_final }}</strong></p>
           </div>
-          <div class="info-column">
+          <div *ngIf="boleto.fecha_compra" class="info-column">
             <p>Fecha</p>
             <p><strong>{{ boleto.fecha_compra | date: 'dd MMM yy' }}</strong></p>
           </div>
-          <div class="info-column">
+          <div *ngIf="boleto.hora_compra" class="info-column">
             <p>Hora</p>
             <p><strong>{{ boleto.hora_compra }}</strong></p>
           </div>
-          <div class="info-column">
+          <div *ngIf="boleto.lugar" class="info-column">
             <p>Lugar</p>
             <p><strong>{{ boleto.lugar }}</strong></p>
           </div>
         </div>
       </div>
-      <div class="qr-code">
-        <img [src]="'data:image/png;base64,' + boleto.qr_imagen" alt="QR Code" />
+      <div *ngIf="boleto.qr_imagen" class="qr-code">
+        <p><img [src]="boleto.qr_imagen" alt="QR Code" /></p>
       </div>
     </div>
   </div>

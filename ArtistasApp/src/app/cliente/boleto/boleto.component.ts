@@ -1,27 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { BoletosService } from '../../services/boletos.service';
 
 @Component({
   selector: 'app-boleto',
   templateUrl: './boleto.component.html',
-  styleUrls: ['./boleto.component.css']
+  styleUrls: ['./boleto.component.css'],
 })
-export class BoletoComponent {
-  boletos: any[] = []; // Array para simular los boletos. Por ahora, vacío para la prueba del estado sin boletos.
+export class BoletoComponent implements OnInit {
+  boletos: any[] = []; // Array para almacenar los boletos aprobados.
 
-  constructor() {}
+  constructor(private boletosService: BoletosService) {}
 
   ngOnInit(): void {
-    // Aquí podrías cargar los boletos de un endpoint cuando esté disponible
-    this.boletos = [
-      {
-        concierto: 'COLDPLAY',
-        localidad: 'Platinum',
-        cantidad: 2,
-        precio: 190,
-        fecha: '21 Sep 24',
-        hora: '8:00 P.M',
-        lugar: 'Teatro Presidente',
-      },
-    ]; // Datos quemados para prueba.
+    this.cargarBoletos();
   }
+
+  cargarBoletos(): void {
+    this.boletosService.getBoletos().subscribe(
+      (response) => {
+        console.log('Respuesta de la API:', response);
+  
+        // Filtrar boletos aprobados
+        this.boletos = response.filter((boleto: any) => boleto.status.toLowerCase() === 'aprobado');
+        
+        // Verificar los valores de qr_imagen
+        this.boletos.forEach((boleto) => {
+          console.log(`QR del boleto #${boleto.id_boleto}:`, boleto.qr_imagen);
+        });
+  
+        console.log('Boletos aprobados:', this.boletos);
+      },
+      (error) => {
+        console.error('Error al cargar los boletos:', error);
+      }
+    );
+  }
+  
 }

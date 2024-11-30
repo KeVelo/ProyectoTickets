@@ -85,28 +85,28 @@ export class PaginaPrincipalComponent implements OnInit, OnDestroy {
     this.showConcerts();
   }
 
-  getImagenPorId(idConcierto: number): string | null {
+  getImagenPorId(idConcierto: number): string {
     switch (idConcierto) {
-      case 1:
+      case 37:
         return 'assets/concierto-carrusel/artic_monkeys.jpg';
-      case 2:
+      case 38:
         return 'assets/concierto-carrusel/metallica.jpg';
-      case 3:
+      case 39:
         return 'assets/concierto-carrusel/karolg.jpg';
-      case 4:
+      case 40:
         return 'assets/concierto-carrusel/luis.jpg';
-      case 5:
+      case 32:
         return 'assets/concierto-carrusel/cas.jpg';
-      case 6:
+      case 33:
         return 'assets/concierto-carrusel/aespa.jpg';
-      case 7:
+      case 34:
         return 'assets/concierto-carrusel/stray.jpg';
-      case 8:
+      case 35:
         return 'assets/concierto-carrusel/mcr.jpg';
-      case 9:
+      case 36:
         return 'assets/concierto-carrusel/1975.jpg';
       default:
-        return null;
+        return 'assets/concierto2.jpg'; // Retornar una imagen predeterminada si no hay una asociada
     }
   }
 

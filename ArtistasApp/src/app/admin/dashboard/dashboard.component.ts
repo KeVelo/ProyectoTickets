@@ -13,10 +13,10 @@ export class DashboardComponent {
 
   // Método para navegar a la ruta correspondiente
   navigateTo(route: string) {
-    if (route === 'vendido') {
-      this.router.navigate(['/vendido']); // Redirige a /boletos
-    } else if (route === 'totalboletos') {
-      this.router.navigate(['/totalboletos']); // Redirige a /vendidos
+    if (route === 'conciertoscrud') {
+      this.router.navigate(['/conciertoscrud']); // Redirige a /boletos
+    } else if (route === 'localidades') {
+      this.router.navigate(['/localidades']); // Redirige a /vendidos
     }
   }
 }

@@ -56,23 +56,23 @@ export class ArtistasListComponent implements OnInit {
 
   getImagenPorId(idConcierto: number): string {
     switch (idConcierto) {
-      case 1:
+      case 37:
         return 'assets/carrusel/artic_monkeys.jpg';
-      case 2:
+      case 38:
         return 'assets/carrusel/metallica.jpg';
-      case 3:
+      case 39:
         return 'assets/carrusel/karolg.jpg';
-      case 4:
+      case 40:
         return 'assets/carrusel/luis.png';
-      case 5:
+      case 32:
         return 'assets/carrusel/cas.jpg';
-      case 6:
+      case 33:
         return 'assets/carrusel/aespa.jpg';
-      case 7:
+      case 34:
         return 'assets/carrusel/stray.jpg';
-      case 8:
+      case 35:
         return 'assets/carrusel/mcr.jpg';
-      case 9:
+      case 36:
         return 'assets/carrusel/1975.jpg';
       default:
         return 'assets/concierto2.jpg'; // Retornar una imagen predeterminada si no hay una asociada

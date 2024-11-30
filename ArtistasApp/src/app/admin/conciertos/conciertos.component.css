@@ -1,0 +1,12 @@
+/* Estilo para los botones de la aplicación */
+.btn-morado {
+    background-color: #6a0dad; /* Color morado */
+    color: white; /* Texto blanco */
+    border: 1px solid #6a0dad; /* Borde morado */
+  }
+  
+  .btn-morado:hover {
+    background-color: #8a2be2; /* Color morado más claro al pasar el ratón */
+    border-color: #8a2be2; /* Borde morado más claro al pasar el ratón */
+  }
+  

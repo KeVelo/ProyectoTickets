@@ -1,9 +1,7 @@
 import { Component,  OnInit} from '@angular/core';
 
-
 import { ConciertosAgregarService, Concierto } from 'src/app/services/conciertos-agregar.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 
 @Component({
   selector: 'app-agregar-concierto',
@@ -33,7 +31,9 @@ export class AgregarConciertoComponent implements OnInit{
       hora_apertura: ['', Validators.required],
       precio_base: ['', [Validators.required, Validators.min(0)]],
       id_lugar: ['', Validators.required],
-      imagen_concierto: ['']
+      imagen_concierto: [''],
+      ruta_concierto_carrusel: [''],
+      estado: ['', Validators.required]
     });
   }
 
@@ -88,6 +88,17 @@ export class AgregarConciertoComponent implements OnInit{
       }
     }
   }
+ 
+  resetFormulario() {
+    this.conciertosForm.reset();
+    this.conciertoEditando = null;
+  }
+
+  getLugarNombre(id_lugar: number): string {
+    const lugar = this.lugares.find(l => l.id === id_lugar);
+    return lugar ? lugar.nombre : 'N/A';
+  }
+
 
   editarConcierto(concierto: Concierto) {
     this.conciertoEditando = concierto;
@@ -98,7 +109,8 @@ export class AgregarConciertoComponent implements OnInit{
       hora_apertura: concierto.hora_apertura,
       precio_base: concierto.precio_base,
       id_lugar: concierto.id_lugar,
-      imagen_concierto: concierto.imagen_concierto
+      estado: concierto.estado
+      
     });
   }
 
@@ -121,16 +133,7 @@ export class AgregarConciertoComponent implements OnInit{
     }
   }
 
-  resetFormulario() {
-    this.conciertosForm.reset();
-    this.conciertoEditando = null;
-  }
-
-  getLugarNombre(id_lugar: number): string {
-    const lugar = this.lugares.find(l => l.id === id_lugar);
-    return lugar ? lugar.nombre : 'N/A';
-  }
-
+  
   imprimirConciertos() {
     const tabla: HTMLElement | null = document.getElementById('tablaConciertos');
     

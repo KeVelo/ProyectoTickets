@@ -1,0 +1,84 @@
+<!-- Llamada al componente Header -->
+<app-dashboard-layout></app-dashboard-layout>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <h1 class="text-center mb-4">Localidades y Precios</h1>
+  
+        <form [formGroup]="localidadesForm" (ngSubmit)="guardarLocalidad()" class="row g-3 mb-5">
+      
+              
+              <div class="col-md-6">
+                <label for="id_concierto" class="form-label">Concierto</label>
+                <select class="form-control" formControlName="id_concierto" required>
+                  <option value="">Selecciona un concierto</option>
+                  <option *ngFor="let concierto of conciertos" [value]="concierto.id">
+                    {{ concierto.nombre_concierto }}
+                  </option>
+                </select>
+              </div>
+              
+          <div class="col-md-6">
+            <label for="platinum_precio" class="form-label">Precio Platinum</label>
+            <input type="number" class="form-control" formControlName="platinum_precio" required>
+          </div>
+          <div class="col-md-6">
+            <label for="vip_precio" class="form-label">Precio VIP</label>
+            <input type="number" class="form-control" formControlName="vip_precio" required>
+          </div>
+          <div class="col-md-6">
+            <label for="general_precio" class="form-label">Precio General</label>
+            <input type="number" class="form-control" formControlName="general_precio" required>
+          </div>
+
+
+          <div class="col-12 text-center">
+            <button type="submit" class="btn btn-morado" >
+              {{ localidadEditando ? 'Actualizar Localidad' : 'Agregar Localidad' }}
+            </button>
+            <button type="button" class="btn btn-secondary ms-2" (click)="resetFormulario()">Cancelar</button>
+          </div>
+
+          
+          
+
+     
+        </form>
+
+        <div class="text-center mb-4">
+          <button class="btn btn-morado"  (click)="imprimirLocalidades()">Imprimir Localidades</button>
+        </div>
+
+
+
+   
+  
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover text-center">
+            <thead class="table-dark">
+              <tr>
+                <th>Concierto</th>
+                <th>Precio Platinum</th>
+                <th>Precio VIP</th>
+                <th>Precio General</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let localidad of localidades">
+                <td>{{ localidad.nombre_concierto }}</td>
+                <td>{{ localidad.platinum_precio | currency }}</td>
+                <td>{{ localidad.vip_precio | currency }}</td>
+                <td>{{ localidad.general_precio | currency }}</td>
+                <td>
+                  <button class="btn btn-sm btn-warning me-2" (click)="editarLocalidad(localidad)">Editar</button>
+                  <button class="btn btn-sm btn-danger" (click)="eliminarLocalidad(localidad)">Eliminar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
